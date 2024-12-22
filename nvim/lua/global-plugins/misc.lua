@@ -55,4 +55,8 @@ return {
       require('colorizer').setup()
     end,
   },
+  {
+    -- More JDTLS support, configured in the /ftplugin/java.lua file
+    'mfussenegger/nvim-jdtls',
+  },
 }
