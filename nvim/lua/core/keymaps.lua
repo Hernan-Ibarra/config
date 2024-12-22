@@ -68,14 +68,14 @@ vim.keymap.set('v', '<', '<gv', opts)
 vim.keymap.set('v', '>', '>gv', opts)
 
 -- Move text up and down
-	-- Option + j = ∆ in Mac
-	-- Option + k = ˚ in Mac
-vim.keymap.set('n', '∆', ':m .+1<CR>==', opts) 
-vim.keymap.set('n', '˚', ':m .-2<CR>==', opts) 
-vim.keymap.set('i', '∆', '<Esc>:m .+1<CR>==gi', opts) 
-vim.keymap.set('i', '˚', '<Esc>:m .-2<CR>==gi', opts) 
-vim.keymap.set('v', '∆', ":m '>+1<CR>gv=gv", opts) 
-vim.keymap.set('v', '˚', ":m '<-2<CR>gv=gv", opts) 
+-- Option + j = ∆ in Mac
+-- Option + k = ˚ in Mac
+vim.keymap.set('n', '∆', ':m .+1<CR>==', opts)
+vim.keymap.set('n', '˚', ':m .-2<CR>==', opts)
+vim.keymap.set('i', '∆', '<Esc>:m .+1<CR>==gi', opts)
+vim.keymap.set('i', '˚', '<Esc>:m .-2<CR>==gi', opts)
+vim.keymap.set('v', '∆', ":m '>+1<CR>gv=gv", opts)
+vim.keymap.set('v', '˚', ":m '<-2<CR>gv=gv", opts)
 
 -- Keep last yanked when pasting. If you want to replace a selection but then update the clipboard, do dp instead
 vim.keymap.set('v', 'p', '"_dP', opts)
@@ -84,13 +84,13 @@ vim.keymap.set('v', 'p', '"_dP', opts)
 local diagnostics_active = true
 
 vim.keymap.set('n', '<leader>do', function()
-  diagnostics_active = not diagnostics_active
+	diagnostics_active = not diagnostics_active
 
-  if diagnostics_active then
-    vim.diagnostic.enable(0)
-  else
-    vim.diagnostic.disable(0)
-  end
+	if diagnostics_active then
+		vim.diagnostic.enable(0)
+	else
+		vim.diagnostic.disable(0)
+	end
 end)
 
 -- Diagnostic keymaps
