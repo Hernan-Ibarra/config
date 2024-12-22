@@ -13,21 +13,18 @@ vim.opt.shortmess:append 'c' -- don't give |ins-completion-menu| messages
 vim.o.cmdheight = 1 -- space in the neovim command line for displaying messages
 
 -- SEARCHING AND COMPLETION
-vim.o.hlsearch = false -- Set highlight on search
 vim.o.ignorecase = true -- Case-insensitive searching UNLESS \C or capital in search
 vim.o.smartcase = true -- smart case
 vim.o.completeopt = 'menuone,noselect' -- Set completeopt to have a better completion experience
 
 -- FORMATTING
-vim.o.fileencoding = 'utf-8' -- the encoding written to a file
 vim.o.expandtab = false -- DO NOT convert tabs to spaces
-vim.o.tabstop = 4 -- spaces displayed when inserting a tab character
-vim.o.shiftwidth = 0 -- number of spaces inserted for each (auto)indentation (e.g. when using >>). When =0 it uses the value of 'tabstop'
-vim.o.autoindent = true -- copy indent from current line when starting new one
+vim.o.tabstop = 8 -- spaces displayed when inserting a tab character
+vim.o.softtabstop = 4
+vim.o.shiftwidth = 4 -- number of spaces inserted for each (auto)indentation (e.g. when using >>). When =0 it uses the value of 'tabstop'
 vim.o.smartindent = true -- make indenting smarter again
-vim.o.backspace = 'indent,eol,start' -- allow backspace (and other deletion motions in insert mode like CTRL-W) on
 vim.o.breakindent = true -- Enable break indent
-vim.o.linebreak = true -- long lines are broken at special characters (specified with the 'breakat' option) rather than at the last character that fits on display. This only affects the display not the content. 
+vim.o.linebreak = true -- long lines are broken at special characters (specified with the 'breakat' option) rather than at the last character that fits on display. This only affects the display not the content.
 vim.opt.iskeyword:append '-' -- hyphens recognized as part of words
 vim.o.timeoutlen = 500 -- time to wait for a mapped sequence to complete (in milliseconds)
 
