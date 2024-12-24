@@ -19,20 +19,6 @@ return {
   {
     -- Hints keybinds
     'folke/which-key.nvim',
-    opts = {
-      -- win = {
-      --   border = {
-      --     { '┌', 'FloatBorder' },
-      --     { '─', 'FloatBorder' },
-      --     { '┐', 'FloatBorder' },
-      --     { '│', 'FloatBorder' },
-      --     { '┘', 'FloatBorder' },
-      --     { '─', 'FloatBorder' },
-      --     { '└', 'FloatBorder' },
-      --     { '│', 'FloatBorder' },
-      --   },
-      -- },
-    },
   },
   {
     -- Autoclose parentheses, brackets, quotes, etc.
@@ -54,6 +40,10 @@ return {
     config = function()
       require('colorizer').setup()
     end,
+  },
+  {
+    -- Nerdfont icons
+    'nvim-tree/nvim-web-devicons',
   },
   {
     -- More JDTLS support, configured in the /ftplugin/java.lua file
