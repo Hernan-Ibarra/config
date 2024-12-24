@@ -54,7 +54,6 @@ return {
     local mode = {
       'mode',
       fmt = function(str)
-        -- return ' ' .. str:sub(1, 1) -- displays only the first character of the mode
         return ' ' .. str
       end,
     }
@@ -91,9 +90,6 @@ return {
       options = {
         icons_enabled = true,
         theme = gruvbox_dark,
-        -- Some useful glyphs:
-        -- https://www.nerdfonts.com/cheat-sheet
-        --        
         section_separators = { left = '', right = '' },
         component_separators = { left = '', right = '' },
         disabled_filetypes = { 'alpha', 'neo-tree', 'Avante' },
