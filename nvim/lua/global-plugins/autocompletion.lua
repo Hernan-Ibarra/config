@@ -1,3 +1,4 @@
+-- TODO: Compare with blink.cmp
 return { -- Autocompletion
   'hrsh7th/nvim-cmp',
   dependencies = {
