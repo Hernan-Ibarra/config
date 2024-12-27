@@ -16,7 +16,7 @@ config = {
 	default_cursor_style = "BlinkingBar",
 	color_scheme = "Gruvbox Dark (Gogh)",
 	font_size = 30,
-	font = wezterm.font("JetBrains Mono", { weight = "Bold" }),
+	font = wezterm.font("JetBrains Mono"),
 	send_composed_key_when_left_alt_is_pressed = true,
 	send_composed_key_when_right_alt_is_pressed = true,
 	max_fps = 120,

@@ -5,34 +5,8 @@ return {
     'windwp/nvim-ts-autotag',
   },
   {
-    -- detect tabstop and shiftwidth automatically
-    'tpope/vim-sleuth',
-  },
-  {
-    -- Powerful Git integration for Vim
-    'tpope/vim-fugitive',
-  },
-  {
-    -- GitHub integration for vim-fugitive
-    'tpope/vim-rhubarb',
-  },
-  {
     -- Hints keybinds
     'folke/which-key.nvim',
-    opts = {
-      -- win = {
-      --   border = {
-      --     { '┌', 'FloatBorder' },
-      --     { '─', 'FloatBorder' },
-      --     { '┐', 'FloatBorder' },
-      --     { '│', 'FloatBorder' },
-      --     { '┘', 'FloatBorder' },
-      --     { '─', 'FloatBorder' },
-      --     { '└', 'FloatBorder' },
-      --     { '│', 'FloatBorder' },
-      --   },
-      -- },
-    },
   },
   {
     -- Autoclose parentheses, brackets, quotes, etc.
@@ -46,7 +20,7 @@ return {
     'folke/todo-comments.nvim',
     event = 'VimEnter',
     dependencies = { 'nvim-lua/plenary.nvim' },
-    opts = { signs = false },
+    opts = {},
   },
   {
     -- high-performance color highlighter
@@ -54,6 +28,10 @@ return {
     config = function()
       require('colorizer').setup()
     end,
+  },
+  {
+    -- Nerdfont icons
+    'nvim-tree/nvim-web-devicons',
   },
   {
     -- More JDTLS support, configured in the /ftplugin/java.lua file
