@@ -24,7 +24,7 @@ alias nv='nvim'
 # Named directories
 doc="$HOME/Documents"
 dow="$HOME/Downloads"
-acc="$HOME/Code/accelerator"
+acc="$HOME/code/accelerator"
 
 # Better ls
 alias ls="ls --color=auto"
