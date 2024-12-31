@@ -6,7 +6,6 @@ vim.o.cursorline = true      -- highlight the current line
 vim.o.splitbelow = true      -- force all horizontal splits to go below current window
 vim.o.splitright = true      -- force all vertical splits to go to the right of current window
 vim.o.showmode = false       -- we don't need to see things like -- INSERT -- anymore because it will be displayed in a status line
-vim.o.showtabline = 2        -- show tabs when there are at least 2 tabs
 vim.o.pumheight = 10         -- pop up menu (for completion) height
 vim.o.conceallevel = 0       -- so that `` is visible in markdown files (see ":help :syn-conceal")
 vim.opt.shortmess:append 'c' -- don't give |ins-completion-menu| messages
