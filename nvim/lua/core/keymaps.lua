@@ -70,7 +70,7 @@ vim.keymap.set('v', '<leader>x', ':lua<CR>')
 
 -- Toggle diagnostics
 vim.keymap.set('n', '<leader>dt', function()
-	vim.diagnostic.enable(not vim.diagnostic.is_enabled())
+  vim.diagnostic.enable(not vim.diagnostic.is_enabled())
 end, { desc = 'Toggle diagnostics' })
 
 -- Diagnostic keymaps
@@ -79,6 +79,5 @@ vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = 'Go to next diagnos
 vim.keymap.set('n', '<leader>do', vim.diagnostic.open_float, { desc = 'Open floating diagnostic message' })
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostics list' })
 
--- Save and load session
-vim.keymap.set('n', '<leader>ss', ':mksession! .session.vim<CR>', { noremap = true, silent = false })
-vim.keymap.set('n', '<leader>sl', ':source .session.vim<CR>', { noremap = true, silent = false })
+-- Go to normal mode in terminal mode with double escape
+vim.keymap.set('t', '<esc><esc>', '<c-\\><c-n>')

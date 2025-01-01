@@ -5,6 +5,7 @@ return {
     -- Automatically install LSPs and related tools to stdpath for Neovim
     { 'williamboman/mason.nvim', config = true }, -- NOTE: Must be loaded before dependants
     'williamboman/mason-lspconfig.nvim',
+    'saghen/blink.cmp',
   },
   config = function()
     vim.api.nvim_create_autocmd('LspAttach', {
@@ -150,5 +151,10 @@ return {
         end,
       },
     }
+
+    for server, config in pairs(servers) do
+      config.capabilities = require('blink.cmp').get_lsp_capabilities(config.capabilities)
+      require('lspconfig')[server].setup(config)
+    end
   end,
 }
