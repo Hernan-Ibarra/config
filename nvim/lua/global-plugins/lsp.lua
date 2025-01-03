@@ -86,7 +86,7 @@ return {
       jsonls = {},
       bashls = {},
       cssls = {},
-      ltex = {},
+      -- ltex = {},
       texlab = {},
       ruff = {
         -- Notes on code actions: https://github.com/astral-sh/ruff-lsp/issues/119#issuecomment-1595628355
