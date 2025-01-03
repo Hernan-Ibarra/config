@@ -7,17 +7,16 @@ alias g='git'
 alias ga='git add'
 alias gf='git fetch'
 alias gs='git status'
-alias gss='git status -s'
 alias gl='git pull'
-alias gb='git branch '
+alias gb='git branch'
 alias gd='git diff'
-alias gco='git checkout '
-alias gcob='git checkout -b '
-alias glgg='git log --graph --max-count=5 --decorate --pretty="oneline"'
+alias gco='git checkout'
 alias gm='git merge'
 alias gp='git push'
 alias gc='git commit -v'
 alias gcm='git commit -m'
+alias gsw='git switch'
+alias gswc='git switch -c'
 
 # Vim/Neovim
 alias v='vim'
@@ -26,7 +25,7 @@ alias nv='nvim'
 # Named directories
 doc="$HOME/Documents"
 dow="$HOME/Downloads"
-acc="$HOME/Code/accelerator"
+acc="$HOME/code/accelerator"
 
 # Better ls
 alias ls="ls --color=auto"
