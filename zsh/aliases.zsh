@@ -11,11 +11,12 @@ alias gl='git pull'
 alias gb='git branch'
 alias gd='git diff'
 alias gco='git checkout'
-alias gcob='git checkout -b'
 alias gm='git merge'
 alias gp='git push'
 alias gc='git commit -v'
 alias gcm='git commit -m'
+alias gsw='git switch'
+alias gswc='git switch -c'
 
 # Vim/Neovim
 alias v='vim'
