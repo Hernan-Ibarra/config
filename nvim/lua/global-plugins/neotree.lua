@@ -1,6 +1,5 @@
 return {
   'nvim-neo-tree/neo-tree.nvim',
-  event = 'VeryLazy',
   branch = 'v3.x',
   dependencies = {
     'nvim-lua/plenary.nvim',
@@ -133,15 +132,17 @@ return {
       commands = {},
       window = {
         position = 'left',
-        width = 40,
+        width = 25,
         mapping_options = {
           noremap = true,
           nowait = true,
         },
         mappings = {
           ['<space>'] = {
-            'toggle_node',
-            nowait = true, -- disable `nowait` if you have existing combos starting with this char that you want to use
+            function(state)
+              state.commands['open'](state)
+              vim.cmd 'Neotree reveal'
+            end,
           },
           ['<2-LeftMouse>'] = 'open',
           ['<cr>'] = 'open',
