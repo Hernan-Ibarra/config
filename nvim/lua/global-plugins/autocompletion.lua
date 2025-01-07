@@ -114,9 +114,10 @@ return { -- Autocompletion
       },
       sources = {
         { name = 'nvim_lsp' },
-        { name = 'luasnip' },
+        { name = 'luasnip', priority = 1000 },
         { name = 'buffer' },
         { name = 'path' },
+        { name = 'render-markdown' },
       },
       formatting = {
         fields = { 'kind', 'abbr', 'menu' },
