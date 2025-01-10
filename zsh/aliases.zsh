@@ -17,6 +17,7 @@ alias gc='git commit -v'
 alias gcm='git commit -m'
 alias gsw='git switch'
 alias gswc='git switch -c'
+alias gr='git restore'
 
 # Vim/Neovim
 alias v='vim'
