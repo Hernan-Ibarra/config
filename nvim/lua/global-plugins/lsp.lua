@@ -58,6 +58,7 @@ return {
     -- See `:help lspconfig-all` for a list of all the pre-configured LSPs
 
     local servers = {
+      marksman = {},
       ts_ls = {},
       jdtls = {},
       html = { filetypes = { 'html', 'twig', 'hbs' } },
@@ -85,7 +86,7 @@ return {
       jsonls = {},
       bashls = {},
       cssls = {},
-      ltex = {},
+      -- ltex = {},
       texlab = {},
       ruff = {
         -- Notes on code actions: https://github.com/astral-sh/ruff-lsp/issues/119#issuecomment-1595628355

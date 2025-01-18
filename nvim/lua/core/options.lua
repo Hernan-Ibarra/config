@@ -33,3 +33,7 @@ vim.o.mouse = 'a'               -- Enable mouse mode. Try ":help 'mouse'"
 vim.o.clipboard = 'unnamedplus' -- Sync clipboard between OS and Neovim.
 vim.o.undofile = true           -- Save undo history
 vim.o.updatetime = 250          -- Decrease update time (The time with nothing being typed for the .swp file to be updated)
+
+-- SPELLING
+vim.o.spelllang = 'en_gb'                  -- British English
+vim.o.spelloptions = 'camel,noplainbuffer' -- Strings in camelCase are recognized as separate words

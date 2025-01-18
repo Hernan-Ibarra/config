@@ -1,3 +1,6 @@
+# Docker
+export DOCKER_HOST="unix://${HOME}/.colima/default/docker.sock"
+
 # Starship
 export STARSHIP_CONFIG="$HOME/.config/starship/starship.toml"
 eval "$(starship init zsh)"
