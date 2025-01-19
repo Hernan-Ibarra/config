@@ -21,6 +21,7 @@ alias gsw='git switch'
 alias gswc='git switch -c'
 alias gr='git restore'
 alias gmv='git mv'
+alias glo='git log'
 
 # Vim/Neovim
 alias v='vim'
