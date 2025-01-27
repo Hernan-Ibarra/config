@@ -18,7 +18,9 @@
                 "from": {
                   "key_code": "caps_lock",
                   "modifiers": {
-                    "optional": ["any"]
+                    "optional": [
+                      "any"
+                    ]
                   }
                 },
                 "to": [
@@ -46,7 +48,9 @@
                 "to": [
                   {
                     "key_code": "left_shift",
-                    "modifiers": ["any"]
+                    "modifiers": [
+                      "any"
+                    ]
                   },
                   {
                     "set_variable": {
@@ -92,7 +96,9 @@
                 "from": {
                   "key_code": "e",
                   "modifiers": {
-                    "optional": ["any"]
+                    "optional": [
+                      "any"
+                    ]
                   }
                 },
                 "to": [
@@ -125,7 +131,9 @@
                 "from": {
                   "key_code": "j",
                   "modifiers": {
-                    "optional": ["any"]
+                    "optional": [
+                      "any"
+                    ]
                   }
                 },
                 "to": [
@@ -147,7 +155,9 @@
                 "from": {
                   "key_code": "k",
                   "modifiers": {
-                    "optional": ["any"]
+                    "optional": [
+                      "any"
+                    ]
                   }
                 },
                 "to": [
@@ -167,14 +177,16 @@
                 ],
                 "description": "Open Teams",
                 "from": {
-                  "key_code": "l",
+                  "key_code": "h",
                   "modifiers": {
-                    "optional": ["any"]
+                    "optional": [
+                      "any"
+                    ]
                   }
                 },
                 "to": [
                   {
-                    "shell_command": "open -a /Applications/Microsoft\ Teams.app"
+                    "shell_command": "open -a '/Applications/Microsoft Teams.app'"
                   }
                 ],
                 "type": "basic"
@@ -191,7 +203,9 @@
                 "from": {
                   "key_code": "l",
                   "modifiers": {
-                    "optional": ["any"]
+                    "optional": [
+                      "any"
+                    ]
                   }
                 },
                 "to": [
@@ -223,7 +237,9 @@
                 "from": {
                   "key_code": "w",
                   "modifiers": {
-                    "optional": ["any"]
+                    "optional": [
+                      "any"
+                    ]
                   }
                 },
                 "to": [
@@ -256,7 +272,9 @@
                 "from": {
                   "key_code": "h",
                   "modifiers": {
-                    "optional": ["any"]
+                    "optional": [
+                      "any"
+                    ]
                   }
                 },
                 "to": [
@@ -278,7 +296,9 @@
                 "from": {
                   "key_code": "l",
                   "modifiers": {
-                    "optional": ["any"]
+                    "optional": [
+                      "any"
+                    ]
                   }
                 },
                 "to": [
@@ -300,7 +320,9 @@
                 "from": {
                   "key_code": "spacebar",
                   "modifiers": {
-                    "optional": ["any"]
+                    "optional": [
+                      "any"
+                    ]
                   }
                 },
                 "to": [
@@ -322,7 +344,9 @@
                 "from": {
                   "key_code": "equal_sign",
                   "modifiers": {
-                    "optional": ["any"]
+                    "optional": [
+                      "any"
+                    ]
                   }
                 },
                 "to": [
@@ -344,7 +368,9 @@
                 "from": {
                   "key_code": "hyphen",
                   "modifiers": {
-                    "optional": ["any"]
+                    "optional": [
+                      "any"
+                    ]
                   }
                 },
                 "to": [
@@ -362,17 +388,42 @@
                     "value": 1
                   }
                 ],
-                "description": "Window: next window",
+                "description": "Window: send to other display",
                 "from": {
-                  "key_code": "n",
+                  "key_code": "k",
                   "modifiers": {
-                    "optional": ["any"]
+                    "optional": [
+                      "any"
+                    ]
                   }
                 },
                 "to": [
                   {
-                    "key_code": "grave_accent_and_tilde",
-                    "modifiers": ["right_command"]
+                    "shell_command": "open -g rectangle://execute-action?name=previous-display"
+                  }
+                ],
+                "type": "basic"
+              },
+              {
+                "conditions": [
+                  {
+                    "name": "hyper_sublayer_w",
+                    "type": "variable_if",
+                    "value": 1
+                  }
+                ],
+                "description": "Window: send to other display",
+                "from": {
+                  "key_code": "j",
+                  "modifiers": {
+                    "optional": [
+                      "any"
+                    ]
+                  }
+                },
+                "to": [
+                  {
+                    "shell_command": "open -g rectangle://execute-action?name=next-display"
                   }
                 ],
                 "type": "basic"
@@ -404,7 +455,9 @@
                 "from": {
                   "key_code": "k",
                   "modifiers": {
-                    "optional": ["any"]
+                    "optional": [
+                      "any"
+                    ]
                   }
                 },
                 "to": [
@@ -436,7 +489,9 @@
                 "from": {
                   "key_code": "j",
                   "modifiers": {
-                    "optional": ["any"]
+                    "optional": [
+                      "any"
+                    ]
                   }
                 },
                 "to": [
@@ -468,7 +523,9 @@
                 "from": {
                   "key_code": "l",
                   "modifiers": {
-                    "optional": ["any"]
+                    "optional": [
+                      "any"
+                    ]
                   }
                 },
                 "to": [
@@ -500,7 +557,9 @@
                 "from": {
                   "key_code": "h",
                   "modifiers": {
-                    "optional": ["any"]
+                    "optional": [
+                      "any"
+                    ]
                   }
                 },
                 "to": [
