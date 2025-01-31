@@ -3,6 +3,7 @@ vim.wo.number = true         -- Make line numbers default
 vim.o.relativenumber = true  -- set relative numbered lines
 vim.opt.termguicolors = true -- set termguicolors to enable highlight groups
 vim.o.cursorline = true      -- highlight the current line
+vim.o.cursorcolumn = true    -- highlight the current column
 vim.o.splitbelow = true      -- force all horizontal splits to go below current window
 vim.o.splitright = true      -- force all vertical splits to go to the right of current window
 vim.o.showmode = false       -- we don't need to see things like -- INSERT -- anymore because it will be displayed in a status line
