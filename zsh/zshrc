@@ -37,5 +37,8 @@ ZSH_HIGHLIGHT_STYLES[path_prefix]=none
 source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 bindkey '^Y' autosuggest-accept
 
+# Use nvim for manpages
+export MANPAGER='nvim +Man!'
+
 # Aliases
 [ -f "$HOME/.config/zsh/aliases.zsh" ] && source "$HOME/.config/zsh/aliases.zsh"
