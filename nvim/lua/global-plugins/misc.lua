@@ -36,8 +36,4 @@ return {
     -- Nerdfont icons
     'nvim-tree/nvim-web-devicons',
   },
-  {
-    -- More JDTLS support, configured in the /ftplugin/java.lua file
-    'mfussenegger/nvim-jdtls',
-  },
 }

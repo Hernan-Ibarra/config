@@ -6,9 +6,10 @@ return {
     { 'williamboman/mason.nvim', opts = {} }, -- NOTE: Must be loaded before dependants
     'williamboman/mason-lspconfig.nvim',
     'WhoIsSethDaniel/mason-tool-installer.nvim',
+    'nvim-java/nvim-java',
 
     -- Useful status updates for LSP.
-    { 'j-hui/fidget.nvim',       opts = {} },
+    { 'j-hui/fidget.nvim', opts = {} },
 
     -- Allows extra capabilities provided by nvim-cmp
     'hrsh7th/cmp-nvim-lsp',
@@ -89,7 +90,6 @@ return {
     local servers = {
       marksman = {},
       ts_ls = {},
-      jdtls = {},
       html = { filetypes = { 'html', 'twig', 'hbs' } },
       lua_ls = {
         settings = {
@@ -155,6 +155,15 @@ return {
           -- certain features of an LSP (for example, turning off formatting for ts_ls)
           server.capabilities = vim.tbl_deep_extend('force', {}, capabilities, server.capabilities or {})
           require('lspconfig')[server_name].setup(server)
+        end,
+        jdtls = function()
+          require('java').setup {
+            -- Your custom jdtls settings goes here
+          }
+
+          require('lspconfig').jdtls.setup {
+            -- Your custom nvim-java configuration goes here
+          }
         end,
       },
     }
