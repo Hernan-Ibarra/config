@@ -4,20 +4,19 @@ return { -- Fuzzy Finder (files, lsp, etc)
   branch = '0.1.x',
   dependencies = {
     'nvim-lua/plenary.nvim',
-    { -- If encountering errors, see telescope-fzf-native README for installation instructions
+    {
       'nvim-telescope/telescope-fzf-native.nvim',
 
-      -- `build` is used to run some command when the plugin is installed/updated.
-      -- This is only run then, not every time Neovim starts up.
+      -- `build` is used to run some command when the plugin is installed/updated. This is only run then, not every time Neovim starts up.
       build = 'make',
 
-      -- `cond` is a condition used to determine whether this plugin should be
-      -- installed and loaded.
+      -- `cond` is a condition used to determine whether this plugin should be installed and loaded.
       cond = function()
         return vim.fn.executable 'make' == 1
       end,
     },
     { 'nvim-telescope/telescope-ui-select.nvim' },
+    { 'nvim-tree/nvim-web-devicons' },
   },
   config = function()
     local actions = require 'telescope.actions'
@@ -32,8 +31,8 @@ return { -- Fuzzy Finder (files, lsp, etc)
         mappings = {
           i = {
             ['<C-k>'] = actions.move_selection_previous, -- move to prev result
-            ['<C-j>'] = actions.move_selection_next, -- move to next result
-            ['<C-l>'] = actions.select_default, -- open file
+            ['<C-j>'] = actions.move_selection_next,     -- move to next result
+            ['<C-l>'] = actions.select_default,          -- open file
           },
           n = {
             ['q'] = actions.close,
@@ -111,3 +110,4 @@ return { -- Fuzzy Finder (files, lsp, etc)
     end, { desc = '[S]earch [N]eovim files' })
   end,
 }
+
