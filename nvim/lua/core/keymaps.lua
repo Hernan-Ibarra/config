@@ -46,7 +46,6 @@ vim.keymap.set('v', '˚', ":m '<-2<CR>gv=gv", opts)
 vim.keymap.set('v', 'p', '"_dP', opts)
 
 -- Execute lua
-vim.keymap.set('n', '<leader>fx', '<cmd>source %<CR>')
 vim.keymap.set('n', '<leader>x', ':.lua<CR>')
 vim.keymap.set('v', '<leader>x', ':lua<CR>')
 
