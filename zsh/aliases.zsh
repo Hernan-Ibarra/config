@@ -8,6 +8,7 @@ alias ga='git add'
 alias gf='git fetch'
 alias gs='git status'
 alias gl='git pull'
+alias glo='git log'
 alias gb='git branch'
 alias gd='git diff'
 alias gco='git checkout'
@@ -22,6 +23,7 @@ alias gr='git restore'
 # Vim/Neovim
 alias v='vim'
 alias nv='nvim'
+alias view='nvim -R'
 
 # Named directories
 doc="$HOME/Documents"
