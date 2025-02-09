@@ -64,13 +64,15 @@ return { -- Autocompletion
       TypeParameter = '󰊄',
     }
 
+    local completeOptions = 'menu,menuone,noinsert'
+
     cmp.setup {
       snippet = {
         expand = function(args)
           luasnip.lsp_expand(args.body)
         end,
       },
-      completion = { completeopt = 'menu,menuone,noinsert' },
+      completion = { completeopt = completeOptions },
 
       mapping = cmp.mapping.preset.insert {
         -- Select the [n]ext item
@@ -136,5 +138,19 @@ return { -- Autocompletion
         end,
       },
     }
+
+    local function toggle_autocomplete()
+      local current_setting = cmp.get_config().completion.autocomplete
+      if current_setting and #current_setting > 0 then
+        cmp.setup { completion = { autocomplete = false } }
+        vim.notify 'Autocomplete disabled'
+      else
+        cmp.setup { completion = { autocomplete = { cmp.TriggerEvent.TextChanged }, completeopt = completeOptions } }
+        vim.notify 'Autocomplete enabled'
+      end
+    end
+
+    vim.api.nvim_create_user_command('NvimCmpToggle', toggle_autocomplete, {})
+    vim.api.nvim_set_keymap('n', '<Leader>a', ':NvimCmpToggle<CR>', { noremap = true, silent = true, desc = 'Toggle autocompletion' })
   end,
 }
