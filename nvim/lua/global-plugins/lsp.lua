@@ -91,6 +91,7 @@ return {
       marksman = {},
       ts_ls = {},
       html = { filetypes = { 'html', 'twig', 'hbs' } },
+      gopls = {},
       lua_ls = {
         settings = {
           Lua = {
