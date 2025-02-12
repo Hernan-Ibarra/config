@@ -4,6 +4,6 @@ return {
   lazy = false,
   opts = {},
   keys = {
-    { '<leader>e', '<CMD>Oil<CR>', desc = '<CMD>Oil<CR>' },
+    { '-', '<CMD>Oil<CR>', desc = '<CMD>Oil<CR>' },
   },
 }
