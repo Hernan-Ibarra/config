@@ -112,7 +112,7 @@ return {
           },
         },
       },
-      tailwindcss = {},
+      tailwindcss = { filetypes = { 'css' } },
       jsonls = {},
       bashls = {},
       cssls = {},
