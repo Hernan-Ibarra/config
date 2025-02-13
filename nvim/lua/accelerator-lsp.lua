@@ -1,5 +1,11 @@
-vim.api.nvim_create_autocmd({ 'BufEnter', 'BufWinEnter' }, {
-  pattern = { '*.accelerator' },
+vim.filetype.add {
+  extension = {
+    accelerator = 'acceleratorscript',
+  },
+}
+
+vim.api.nvim_create_autocmd('FileType', {
+  pattern = 'acceleratorscript',
   callback = function()
     -- NOTE: Change this to the path to the respository on your machine
     local path = '/Users/hernan.ibarramejia87/code/accelerator-lsp'
@@ -13,6 +19,6 @@ vim.api.nvim_create_autocmd({ 'BufEnter', 'BufWinEnter' }, {
     end
 
     vim.lsp.buf_attach_client(0, client)
-    print 'accelerator language server connected!'
+    print 'accelerator language server found'
   end,
 })
