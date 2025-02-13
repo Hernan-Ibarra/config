@@ -11,14 +11,14 @@ vim.api.nvim_create_autocmd('FileType', {
     local path = '/Users/hernan.ibarramejia87/code/accelerator-lsp'
     local command = { 'npm', 'run', '--silent', '--prefix', path, 'start' }
 
-    local client = vim.lsp.start { name = 'accelerator-lsp', cmd = command }
+    local server = vim.lsp.start { name = 'accelerator-lsp', cmd = command }
 
-    if not client then
+    if not server then
       vim.notify 'there is a problem connecting to the accelerator language server'
       return
     end
 
-    vim.lsp.buf_attach_client(0, client)
+    vim.lsp.buf_attach_client(0, server)
     print 'accelerator language server found'
   end,
 })
