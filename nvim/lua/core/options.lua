@@ -47,6 +47,7 @@ vim.o.updatetime = 250 -- Decrease update time (The time with nothing being type
 vim.schedule(function()
   vim.opt.clipboard = 'unnamedplus' -- Sync clipboard between OS and Neovim.
 end) -- Schedule the setting after `UiEnter` because it can increase startup-time.
+vim.o.exrc = true -- WARN: Allow execution of local configuration files. For more info see :help 'exrc'
 
 -- SPELLING
 vim.o.spelllang = 'en_gb' -- British English
