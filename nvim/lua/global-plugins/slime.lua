@@ -2,7 +2,6 @@ return {
   'jpalardy/vim-slime',
   init = function()
     -- these should be set before the plugin loads
-    -- vim.g.slime_target = 'tmux'
     vim.g.slime_target = 'tmux'
     vim.g.slime_no_mappings = true
   end,
@@ -17,3 +16,4 @@ return {
     vim.keymap.set('n', '<leader>rc', '<Plug>SlimeConfig', { remap = true, silent = false })
   end,
 }
+
