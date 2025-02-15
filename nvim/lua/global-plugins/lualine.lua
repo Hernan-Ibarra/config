@@ -2,19 +2,16 @@
 return {
   'nvim-lualine/lualine.nvim',
   config = function()
-    -- Copyright (c) 2020-2021 hoob3rt
-    -- MIT license, see LICENSE for more details.
-    -- stylua: ignore
     local colors = {
-      black        = '#282828',
-      white        = '#ebdbb2',
-      red          = '#fb4934',
-      green        = '#b8bb26',
-      blue         = '#83a598',
-      yellow       = '#fe8019',
-      gray         = '#a89984',
-      darkgray     = '#3c3836',
-      lightgray    = '#504945',
+      black = '#282828',
+      white = '#ebdbb2',
+      red = '#fb4934',
+      green = '#b8bb26',
+      blue = '#83a598',
+      yellow = '#fe8019',
+      gray = '#a89984',
+      darkgray = '#3c3836',
+      lightgray = '#504945',
       inactivegray = '#7c6f64',
     }
 
@@ -61,11 +58,11 @@ return {
     local filename = {
       'filename',
       file_status = true, -- displays file status (readonly status, modified status)
-      path = 0,           -- 0 = just filename, 1 = relative path, 2 = absolute path
+      path = 0, -- 0 = just filename, 1 = relative path, 2 = absolute path
     }
 
     local hide_in_width = function()
-      return vim.fn.winwidth(0) > 100
+      return vim.fn.winwidth(0) > 80
     end
 
     local diagnostics = {
