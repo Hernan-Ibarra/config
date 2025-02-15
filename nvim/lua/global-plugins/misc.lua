@@ -15,13 +15,7 @@ return {
     config = true,
     opts = {},
   },
-  {
-    -- Highlight todo, notes, etc in comments
-    'folke/todo-comments.nvim',
-    event = 'VimEnter',
-    dependencies = { 'nvim-lua/plenary.nvim' },
-    opts = {},
-  },
+
   {
     -- high-performance color highlighter
     'norcalli/nvim-colorizer.lua',
