@@ -1,4 +1,4 @@
-return { -- Autoformat
+return {
   'stevearc/conform.nvim',
   event = { 'BufWritePre' },
   cmd = { 'ConformInfo' },
@@ -15,7 +15,7 @@ return { -- Autoformat
   opts = {
     notify_on_error = false,
     format_on_save = function(bufnr)
-      -- Disable "format_on_save lsp_fallback" for languages that don't have a well standardized coding style. You can add additional languages here or re-enable it for the disabled ones.
+      -- Disable "format_on_save lsp_fallback" for languages that don't have a well standardized coding style.
       local disable_filetypes = { c = true, cpp = true }
       local lsp_format_opt
       if disable_filetypes[vim.bo[bufnr].filetype] then
@@ -24,7 +24,7 @@ return { -- Autoformat
         lsp_format_opt = 'fallback'
       end
       return {
-        timeout_ms = 500,
+        timeout_ms = 1000,
         lsp_format = lsp_format_opt,
       }
     end,
@@ -41,7 +41,6 @@ return { -- Autoformat
       sh = { 'shfmt' },
       typescript = { 'prettierd' },
       typescriptreact = { 'prettierd' },
-      --         'eslint_d',           -- ts/js linter
     },
   },
 }
