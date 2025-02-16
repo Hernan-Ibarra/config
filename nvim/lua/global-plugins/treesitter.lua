@@ -4,6 +4,7 @@ return { -- Highlight, edit, and navigate code
   main = 'nvim-treesitter.configs', -- Sets main module to use for opts
   -- [[ Configure Treesitter ]] See `:help nvim-treesitter`
   config = function()
+    vim.treesitter.language.register('typescript', 'acceleratorscript')
     local configs = require 'nvim-treesitter.configs'
 
     configs.setup {

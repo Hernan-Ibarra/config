@@ -1,11 +1,5 @@
 local notify = require 'notify'
 
-vim.filetype.add {
-  extension = {
-    accelerator = 'acceleratorscript',
-  },
-}
-
 vim.api.nvim_create_autocmd('FileType', {
   pattern = 'acceleratorscript',
   callback = function()
