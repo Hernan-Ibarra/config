@@ -1,12 +1,8 @@
--- NOTE: Keymaps and options are best loaded before lazy.
+-- INFO: This matches *.accelerator files and sets filetype to 'acceleratorscript'.
+vim.filetype.add { extension = { accelerator = 'acceleratorscript' } }
+
 require 'core.options'
 require 'core.keymaps'
-
-vim.filetype.add {
-  extension = {
-    accelerator = 'acceleratorscript',
-  },
-}
-
 require 'config.lazy'
-require 'accelerator-lsp'
+
+require 'accelerator-lsp' -- INFO: Sets up accelerator-lsp
