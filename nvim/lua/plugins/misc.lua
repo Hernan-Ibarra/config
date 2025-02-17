@@ -30,4 +30,32 @@ return {
     -- Nerdfont icons
     'nvim-tree/nvim-web-devicons',
   },
+  {
+    'folke/lazydev.nvim',
+    ft = 'lua',
+    opts = {
+      library = {
+        { path = '${3rd}/luv/library', words = { 'vim%.uv' } },
+      },
+    },
+  },
+  {
+    'rcarriga/nvim-notify',
+  },
+  {
+    'stevearc/oil.nvim',
+    dependencies = { 'nvim-tree/nvim-web-devicons' },
+    lazy = false,
+    opts = {},
+    keys = {
+      { '-', '<CMD>Oil<CR>', desc = '<CMD>Oil<CR>' },
+    },
+  },
+  {
+    'tjdevries/present.nvim',
+  },
+  {
+    'Hernan-Ibarra/simple-repl',
+    enabled = false,
+  },
 }
