@@ -1,8 +1,14 @@
+# For compatibility with linux
+export XDG_CONFIG_HOME="$HOME/.config"
+export XDG_DATA_HOME="$HOME/.local/share"
+export XDG_STATE_HOME="$HOME/.local/state"
+export XDG_CACHE_HOME="$HOME/.cache"
+
 # Docker
 export DOCKER_HOST="unix://${HOME}/.colima/default/docker.sock"
 
 # Starship
-export STARSHIP_CONFIG="$HOME/.config/starship/starship.toml"
+export STARSHIP_CONFIG="$XDG_CONFIG_HOME/starship/starship.toml"
 eval "$(starship init zsh)"
 
 # Start with tmux (but not on embedded terminals)
@@ -29,6 +35,7 @@ export PATH="$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/b
 export PATH="$PATH:/Applications/IntelliJ IDEA.app/Contents/MacOS"
 export PATH="$PATH:/usr/local/bin"
 export PATH="$PATH:$HOME/.local/bin/"
+export PATH="$PATH:$HOME/Library/Python/3.13/bin"
 export NVM_DIR="$HOME/.nvm"
 
 # [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
@@ -42,12 +49,6 @@ source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zs
 ZSH_HIGHLIGHT_STYLES[path]=none
 ZSH_HIGHLIGHT_STYLES[path_prefix]=none
 
-# For compatibility with linux
-export XDG_CONFIG_HOME="$HOME/.config"
-export XDG_DATA_HOME="$HOME/.local/share"
-export XDG_STATE_HOME="$HOME/.local/state"
-export XDG_CACHE_HOME="$HOME/.cache"
-
 # Activate autosuggestions
 source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 bindkey '^Y' autosuggest-accept
@@ -56,4 +57,4 @@ bindkey '^Y' autosuggest-accept
 export MANPAGER='nvim +Man!'
 
 # Aliases
-[ -f "$HOME/.config/zsh/aliases.zsh" ] && source "$HOME/.config/zsh/aliases.zsh"
+[ -f "$XDG_CONFIG_HOME/zsh/aliases.zsh" ] && source "$XDG_CONFIG_HOME/zsh/aliases.zsh"
