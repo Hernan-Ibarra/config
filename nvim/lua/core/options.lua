@@ -11,6 +11,7 @@ vim.o.conceallevel = 0 -- so that `` is visible in markdown files (see ":help :s
 vim.opt.shortmess:append 'c' -- don't give |ins-completion-menu| messages
 vim.o.cmdheight = 1 -- space in the neovim command line for displaying messages
 vim.o.signcolumn = 'yes' -- always draw the signcolumn, even if it is empty
+vim.o.background = 'dark' -- 'light' or 'dark'
 
 -- Highlight when yanking (copying) text
 --  Try it with `yap` in normal mode
@@ -37,7 +38,6 @@ vim.o.shiftwidth = 4 -- number of spaces inserted for each (auto)indentation (e.
 vim.o.smartindent = true -- make indenting smarter again
 vim.o.breakindent = true -- Enable break indent
 vim.o.linebreak = true -- long lines are broken at special characters (specified with the 'breakat' option) rather than at the last character that fits on display. This only affects the display not the content.
-vim.opt.iskeyword:append '-' -- hyphens recognized as part of words
 vim.o.timeoutlen = 500 -- time to wait for a mapped sequence to complete (in milliseconds)
 
 -- OS INTERACTION
