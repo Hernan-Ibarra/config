@@ -42,9 +42,6 @@ vim.keymap.set('i', '˚', '<Esc>:m .-2<CR>==gi', opts)
 vim.keymap.set('v', '∆', ":m '>+1<CR>gv=gv", opts)
 vim.keymap.set('v', '˚', ":m '<-2<CR>gv=gv", opts)
 
--- Keep last yanked when pasting. If you want to replace a selection but then update the clipboard, do dp instead
-vim.keymap.set('v', 'p', '"_dP', opts)
-
 -- Execute lua
 vim.keymap.set('n', '<leader>x', ':.lua<CR>')
 vim.keymap.set('v', '<leader>x', ':lua<CR>')
