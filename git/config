@@ -1,0 +1,21 @@
+[user]
+	email = hernan.ibarramejia87@thg.com
+	name = Hernan-Ibarra
+[init]
+	defaultBranch = main
+[core]
+	pager = nvim -R
+[color]
+	pager = no
+[merge]
+	tool = vimdiff
+[mergetool]
+	prompt = true
+[mergetool "vimdiff"]
+	cmd = nvim -d $BASE $LOCAL $REMOTE $MERGED -c '$wincmd w' -c 'wincmd J'
+[commit]
+	template = /Users/hernan.ibarramejia87/.config/git/gitmessage.txt
+[diff]
+	tool = nvimdiff
+[difftool]
+	prompt = false
