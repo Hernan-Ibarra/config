@@ -52,9 +52,6 @@ return {
     },
   },
   {
-    'tjdevries/present.nvim',
-  },
-  {
     'Hernan-Ibarra/simple-repl',
     enabled = false,
   },
