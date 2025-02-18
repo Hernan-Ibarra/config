@@ -13,7 +13,7 @@ config = {
     top = 0,
     bottom = 0,
   },
-  default_cursor_style = "BlinkingBar",
+  default_cursor_style = "BlinkingBlock",
   color_scheme = "Gruvbox Dark (Gogh)",
   font_size = 30,
   font = wezterm.font("JetBrains Mono"),
