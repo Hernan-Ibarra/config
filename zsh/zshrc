@@ -22,8 +22,8 @@ if which tmux >/dev/null 2>&1; then
         -z "$EMACS" && \
         -z "$VIM" && \
         -z "$INSIDE_INTELLIJ" ]]; then
-    # Try to attach to the default tmux session, or create a new one if it doesn't exist
-    tmux attach -t default || tmux new -s default
+    # Try to attach to the main tmux session, or create a new one if it doesn't exist
+    tmux attach -t main || tmux new -s main
     exit
   fi
 fi
