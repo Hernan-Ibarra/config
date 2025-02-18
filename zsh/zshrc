@@ -58,3 +58,11 @@ export MANPAGER='nvim +Man!'
 
 # Aliases
 [ -f "$XDG_CONFIG_HOME/zsh/aliases.zsh" ] && source "$XDG_CONFIG_HOME/zsh/aliases.zsh"
+
+# Fix cursor in Wezterm
+# TODO: Understand how this works.
+# Relevant issue: https://github.com/wezterm/wezterm/issues/4127
+zle-line-init() {
+echo -ne "\e[1 q"
+}
+zle -N zle-line-init
