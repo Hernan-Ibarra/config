@@ -65,3 +65,11 @@ mcd () {
 }
 
 alias python='python3'
+
+# slides
+slides () {
+    export COLUMNS="$(tput columns)"
+    export LINES="$(tput lines)"
+    command slides $@
+}
+
