@@ -31,6 +31,8 @@ doc="$HOME/Documents"
 dow="$HOME/Downloads"
 acc="$HOME/code/accelerator"
 
+alias conf="cd $XDG_CONFIG_HOME"
+
 # Better ls
 alias ls="ls --color=auto"
 alias la="ls --color=auto -a"
