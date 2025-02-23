@@ -9,6 +9,11 @@ export DOCKER_HOST="unix://${HOME}/.colima/default/docker.sock"
 
 # Starship
 export STARSHIP_CONFIG="$XDG_CONFIG_HOME/starship/starship.toml"
+if [[ "${widgets[zle-keymap-select]#user:}" == "starship_zle-keymap-select" || \
+      "${widgets[zle-keymap-select]#user:}" == "starship_zle-keymap-select-wrapped" ]]; then
+    zle -N zle-keymap-select "";
+fi
+
 eval "$(starship init zsh)"
 
 # Start with tmux (but not on embedded terminals)
@@ -28,7 +33,12 @@ if which tmux >/dev/null 2>&1; then
   fi
 fi
 
-set -o vi
+# Configure vi mode in terminal
+export KEYTIMEOUT=1
+bindkey -v
+bindkey -M vicmd '^[' undefined-key
+bindkey "^?" backward-delete-char
+
 export EDITOR='nvim'
 
 export PATH="$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
