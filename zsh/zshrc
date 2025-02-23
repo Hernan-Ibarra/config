@@ -76,3 +76,19 @@ zle-line-init() {
 echo -ne "\e[1 q"
 }
 zle -N zle-line-init
+
+# Set up fzf key bindings and fuzzy completion
+source <(fzf --zsh)
+[ -f "$XDG_CONFIG_HOME/fzf/fzfrc" ] && source "$XDG_CONFIG_HOME/fzf/fzfrc"
+
+# History file for zsh
+HISTFILE="$HOME/.zsh_history"
+HISTSIZE=10000
+SAVEHIST=10000
+setopt SHARE_HISTORY
+setopt HIST_EXPIRE_DUPS_FIRST
+setopt HIST_IGNORE_DUPS
+setopt HIST_IGNORE_ALL_DUPS
+setopt HIST_IGNORE_SPACE
+setopt HIST_FIND_NO_DUPS
+setopt HIST_SAVE_NO_DUPS
