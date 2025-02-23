@@ -23,7 +23,7 @@ return {
       dashboard.button('e', '  > New file', ':ene<CR>'),
       dashboard.button('f', '󰈞  > Find file', ':Telescope find_files<CR>'),
       dashboard.button('r', '  > Recent', ':Telescope oldfiles<CR>'),
-      dashboard.button('s', '  > Settings', ':e ~/.config/nvim | :cd ~/.config/nvim<CR>'),
+      dashboard.button('s', '  > Settings', ':e ~/.config/nvim | :cd ~/.config/nvim | :Telescope find_files<CR>'),
       dashboard.button('q', '  > Quit NVIM', ':qa<CR>'),
     }
 
@@ -203,6 +203,18 @@ return {
     end
 
     dashboard.section.footer.val = main(54)
+
+    dashboard.config = {
+      layout = {
+        dashboard.section.header,
+        dashboard.section.buttons,
+        dashboard.section.footer,
+      },
+      opts = {
+        margin = 5,
+      },
+    }
+
     alpha.setup(dashboard.opts)
   end,
 }
