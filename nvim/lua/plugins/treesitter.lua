@@ -27,6 +27,8 @@ return { -- Highlight, edit, and navigate code
         'css',
         'html',
         'tmux',
+        'astro',
+        'tsx',
       },
 
       -- Install parsers synchronously when set to false (only applied to `ensure_installed`)
