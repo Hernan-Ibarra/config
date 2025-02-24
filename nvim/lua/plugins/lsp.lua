@@ -86,6 +86,21 @@ return {
     local servers = {
       marksman = {},
       ts_ls = {},
+      astro = {
+        cmd = { 'astro-ls', '--stdio' },
+        filetypes = { 'astro' },
+        root_dir = vim.fs.root(0, { 'package.json', 'tsconfig.json', 'jsconfig.json', '.git' }),
+        docs = {
+          description = 'https://github.com/withastro/language-tools',
+          root_dir = [[root_pattern("package.json", "tsconfig.json", "jsconfig.json", ".git")]],
+        },
+        init_options = {
+          configuration = {
+            astro = {},
+          },
+        },
+        settings = {},
+      },
       html = { filetypes = { 'html', 'twig', 'hbs' } },
       gopls = {},
       lua_ls = {
