@@ -23,6 +23,7 @@ return {
       require('colorizer').setup {
         'css',
         'html',
+        'astro',
       }
     end,
   },

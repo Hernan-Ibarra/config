@@ -11,7 +11,7 @@ indent_style = tab
 indent_size = 4
 tab_width = 8
 
-[*.{html,css,js,jsx,ts,tsx,config,json,md,lua}]
+[*.{html,astro,css,js,jsx,ts,tsx,config,json,md,lua}]
 indent_style = space
 indent_size = 2
 
