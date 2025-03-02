@@ -23,12 +23,14 @@ return {
       require('colorizer').setup {
         'css',
         'html',
+        'astro',
       }
     end,
   },
   {
     -- Nerdfont icons
     'nvim-tree/nvim-web-devicons',
+    opts = {},
   },
   {
     'folke/lazydev.nvim',

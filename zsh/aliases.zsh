@@ -36,7 +36,7 @@ alias conf="cd $XDG_CONFIG_HOME"
 # Better ls
 alias ls="ls --color=auto"
 alias la="ls --color=auto -a"
-alias ll="ls --color=auto -la"
+alias ll="ls --color=auto -lah"
 
 ## a quick way to get out of current directory ##
 alias ..='cd ../'
