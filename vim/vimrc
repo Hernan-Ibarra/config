@@ -1,40 +1,4 @@
 " ========================================
-" General
-" ========================================
-
-" Sync clipboard with OS
-if system('uname -s') == "Darwin\n"
-  set clipboard=unnamed "OSX
-else
-  set clipboard=unnamedplus "Linux
-endif
-
-" Syntax highlighting
-syntax on
-
-" True colors
-if !has('gui_running') && &term =~ '\%(screen\|tmux\)'
-  let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
-  let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
-endif
-
-" Colorscheme
-set termguicolors
-set background=dark
-augroup my_retrobox
-  au!
-  au Colorscheme retrobox hi Normal guifg=#ebdbb2 guibg=#282828 gui=NONE cterm=NONE
-augroup END
-colorscheme retrobox
-
-" change cursor depending on mode
-let &t_SI = "\e[5 q"
-let &t_EI = "\e[1 q"
-set ttimeout
-set ttimeoutlen=1
-set ttyfast
-
-" ========================================
 " Options
 " ========================================
 
@@ -46,26 +10,19 @@ set splitbelow
 set splitright
 set pumheight=10
 set conceallevel=0
-set shortmess+=c
+set shortmess=F
 set cmdheight=1
-set numberwidth=4
-set splitbelow
-set cmdheight=1
-
 set laststatus=2
-set statusline=%f
-set statusline+=%=
-set statusline+=%l
-set statusline+=/
-set statusline+=%L
-
 set showcmd
 set nowrap
+set wildmenu
 
 " SEARCHING AND COMPLETION
 set ignorecase
 set smartcase
 set completeopt=menuone,noselect
+set hlsearch
+set incsearch
 
 " FORMATTING
 set encoding=UTF-8
@@ -83,7 +40,6 @@ set noexpandtab
 
 " OS INTERACTION
 set mouse=a
-set undofile
 set updatetime=250
 set exrc
 set nowritebackup
@@ -105,30 +61,31 @@ let mapleader=" "
 let maplocalleader=" "
 
 " clear highlights
-nnoremap <Esc> :noh<CR>
+nnoremap <Esc> <Cmd>noh<CR>
 
 " Find and center
 nnoremap n nzzzv
 nnoremap N Nzzzv
 
 " Resize with arrows
-nnoremap <Up> :resize -2<CR>
-nnoremap <Down> :resize +2<CR>
-nnoremap <Left> :vertical resize -2<CR>
-nnoremap <Right> :vertical resize +2<CR>
+nnoremap <Up> <Cmd>resize -2<CR>
+nnoremap <Down> <Cmd>resize +2<CR>
+nnoremap <Left> <Cmd>vertical resize -2<CR>
+nnoremap <Right> <Cmd>vertical resize +2<CR>
 
 " toggle line wrapping
-nnoremap <leader>tw :set wrap!<CR>
+nnoremap <leader>tw <Cmd>set wrap!<CR>
 
 " Stay in indent mode
 vnoremap < <gv
 vnoremap > >gv
 
 " Yank the whole file
-noremap <leader>y :%yank<CR>
+nnoremap <leader>y <Cmd>%yank<CR>
+nnoremap <leader>v ggvG$
 
 " Open file explorer
-noremap <silent> <leader>e :Lex<CR>
+nnoremap <leader>e <Cmd>Lex<CR>
 
 " Move text up and down
 " Option + j = ∆ in Mac
@@ -139,4 +96,112 @@ inoremap ∆ <Esc>:m .+1<CR>==gi
 inoremap ˚ <Esc>:m .-2<CR>==gi
 vnoremap ∆ :m '>+1<CR>gv=gv
 vnoremap ˚ :m '<-2<CR>gv=gv
+
+" ========================================
+" Other
+" ========================================
+
+" Sync clipboard with OS
+if system('uname -s') == "Darwin\n"
+    set clipboard=unnamed "OSX
+else
+    set clipboard=unnamedplus "Linux
+endif
+
+" Syntax highlighting
+syntax enable
+
+" Status line
+function Stl_mode()
+    let l:mode_display={
+       \ 'n'  : 'NORMAL',
+       \ 'v'  : 'VISUAL',
+       \ 'V'  : 'V-LINE',
+       \ "\<C-V>" : 'V-BLOCK',
+       \ 'i'  : 'INSERT',
+       \ 'R'  : 'REPLACE',
+       \ 'Rv' : 'V-REPLACE',
+       \ 'c'  : 'COMMAND',
+       \}
+
+    let l:mode_color={
+       \ 'n'  : '#a89984',
+       \ 'v'  : '#fe8019',
+       \ 'V'  : '#fe8019',
+       \ "\<C-V>" : '#fe8019',
+       \ 'i'  : '#83a598',
+       \ 'R'  : '#fb4934',
+       \ 'Rv' : '#fe8019',
+       \ 'c'  : '#b8bb26',
+       \}
+    let l:mode=mode()
+    call hlset([#{name: 'StatusLineA', guibg: l:mode_color[l:mode]}])
+    call hlset([#{name: 'StatusLineAB', guifg: l:mode_color[l:mode]}])
+    return l:mode_display[l:mode]
+endfunction
+
+function Stl_git()
+    silent return system("git branch --show-current 2>/dev/null | tr -d '\n'")
+endfunction
+
+function Stl_set_highlight_groups()
+    highlight StatusLineA guibg=#a89984 guifg=#282828 gui=NONE cterm=bold
+    highlight StatusLineB guibg=#504945 guifg=#ebdbb2 gui=NONE cterm=NONE
+    highlight StatusLineC guibg=#3c3836 guifg=#a89984 gui=NONE cterm=NONE
+    highlight StatusLineAB guibg=#504945 guifg=#a89984 gui=NONE cterm=NONE
+    highlight StatusLineBC guibg=#3c3836 guifg=#504945 gui=NONE cterm=NONE
+endfunction
+
+set statusline=
+set statusline+=%#StatusLineA#\ \ %{Stl_mode()}\ 
+set statusline+=%#StatusLineAB#
+set statusline+=%#StatusLineB#\ \ %{Stl_git()}\ 
+set statusline+=%#StatusLineBC#
+set statusline+=%#StatusLineC#\ %t
+
+set statusline+=%=
+set statusline+=%y\ 
+set statusline+=%#StatusLineBC#
+set statusline+=%#StatusLineB#\ %l:%c\ 
+set statusline+=%#StatusLineAB#
+set statusline+=%#StatusLineA#\ %p%%\ 
+
+" Colorscheme
+set termguicolors
+set background=dark
+augroup my_retrobox
+    au!
+    au Colorscheme retrobox highlight Normal guifg=#ebdbb2 guibg=#282828 gui=NONE cterm=NONE
+    au Colorscheme retrobox call Stl_set_highlight_groups()
+augroup END
+colorscheme retrobox
+
+" change cursor depending on mode
+let &t_SI = "\e[5 q"
+let &t_EI = "\e[1 q"
+set ttimeout
+set ttimeoutlen=1
+set ttyfast
+
+" Restore cursor to last edited position when opening a file
+augroup RestoreCursor
+  autocmd!
+  autocmd BufReadPost *
+    \ let line = line("'\"")
+    \ | if line >= 1 && line <= line("$") && &filetype !~# 'commit'
+    \      && index(['xxd', 'gitrebase'], &filetype) == -1
+    \ |   execute "normal! g`\""
+    \ | endif
+augroup END
+
+" Detect filetype plugins and indent files
+filetype plugin indent on
+
+" Make % more powerful
+packadd! matchit
+
+" Let's save undo info!
+call mkdir($HOME."/.vim/undo-dir", "p")
+set undodir=~/.vim/undo-dir
+set undofile
 
