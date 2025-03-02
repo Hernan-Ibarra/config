@@ -2,111 +2,101 @@
 " Options
 " ========================================
 
-set encoding=UTF-8
-set spelllang=en_gb,es_es
-set number " Enable line numbers
-set mouse=a " Enable mouse mode
-set breakindent " Enable break indent
-set undofile " Save undo history
-set ignorecase " Case-insensitive searching unless \C or capital in search
-set smartcase " Enable smart case
-set updatetime=250 " Decrease update time
-set timeoutlen=300 " Time to wait for a mapped sequence to complete (in milliseconds)
-set nobackup " Don't create a backup file
-set nowritebackup " Don't write backup before overwriting
-set completeopt=menuone,noselect " Better completion experience
-set linebreak " Don't break words when wrapping
-set relativenumber " Use relative line numbers
-set numberwidth=4 " Number column width
-set shiftwidth=4 " Spaces per indentation
-set softtabstop=4 " Spaces per tab during editing ops
-set noexpandtab " Convert tabs to spaces
+" DISPLAY
+set number
+set relativenumber
 set cursorline
-set cursorcolumn
-set splitbelow " Horizontal splits below current window
-set splitright " Vertical splits to the right
-set smartindent " Smart indentation
-set backspace=indent,eol,start " Configurable backspace behavior
-set pumheight=10 " Popup menu height
-set conceallevel=0 " Make `` visible in markdown
-set fileencoding=utf-8 " File encoding
-set cmdheight=1 " Command line height
-set autoindent " Auto-indent new lines
-set showmatch " show the matching part of pairs [] {} and ()
-set laststatus=2 " Show status bar
-set statusline=%f " Path to the file
-set statusline+=%= " Switch to the right side
-set statusline+=%l " Current line
-set statusline+=/ " Separator
-set statusline+=%L " Total lines
+set splitbelow
+set splitright
+set pumheight=10
+set conceallevel=0
+set shortmess=F
+set cmdheight=1
+set laststatus=2
 set showcmd
+set nowrap
+set wildmenu
+set hidden
 
+" SEARCHING AND COMPLETION
+set ignorecase
+set smartcase
+set completeopt=menuone,noselect
+set hlsearch
+set incsearch
+
+" FORMATTING
+set encoding=UTF-8
+set fileencoding=utf-8
+set noexpandtab
+set tabstop=8
+set softtabstop=4
+set shiftwidth=4
+set smartindent
+set breakindent
+set linebreak
+set timeoutlen=500
+set autoindent
+set noexpandtab
+
+" OS INTERACTION
+set mouse=a
+set updatetime=250
+set exrc
+set nowritebackup
+
+" SPELLING
+set spelllang=en_gb
+set spelloptions=camel
 
 " ========================================
 " Keymaps
 " ========================================
 
-" Set leader key
-let mapleader = " "
-let maplocalleader = " "
-
 " Disable the spacebar key's default behavior in Normal and Visual modes
 nnoremap <Space> <Nop>
 vnoremap <Space> <Nop>
 
+" Set leader key
+let mapleader=" "
+let maplocalleader=" "
+
 " clear highlights
-nnoremap <Esc> :noh<CR>
+nnoremap <Esc> <Cmd>noh<CR>
 
 " Find and center
 nnoremap n nzzzv
 nnoremap N Nzzzv
 
 " Resize with arrows
-nnoremap <Up> :resize -2<CR>
-nnoremap <Down> :resize +2<CR>
-nnoremap <Left> :vertical resize -2<CR>
-nnoremap <Right> :vertical resize +2<CR>
-
-" Navigate buffers
-nnoremap <Tab> :bnext<CR>
-nnoremap <S-Tab> :bprevious<CR>
-nnoremap <leader>sb :buffers<CR>:buffer<Space>
-
-" window management
-nnoremap <leader>v <C-w>v
-nnoremap <leader>h <C-w>s
-nnoremap <leader>se <C-w>=
-nnoremap <leader>xs :close<CR>
-
-" Navigate between splits
-nnoremap <C-k> :wincmd k<CR>
-nnoremap <C-j> :wincmd j<CR>
-nnoremap <C-h> :wincmd h<CR>
-nnoremap <C-l> :wincmd l<CR>
-
-" tabs
-nnoremap <leader>to :tabnew<CR>
-nnoremap <leader>tx :tabclose<CR>
-nnoremap <leader>tn :tabn<CR>
-nnoremap <leader>tp :tabp<CR>
-
-nnoremap <leader>x :bdelete<CR>
-nnoremap <leader>b :enew<CR>
+nnoremap <Up> <Cmd>resize -2<CR>
+nnoremap <Down> <Cmd>resize +2<CR>
+nnoremap <Left> <Cmd>vertical resize -2<CR>
+nnoremap <Right> <Cmd>vertical resize +2<CR>
 
 " toggle line wrapping
-nnoremap <leader>lw :set wrap!<CR>
+nnoremap <leader>tw <Cmd>set wrap!<CR>
 
 " Stay in indent mode
 vnoremap < <gv
 vnoremap > >gv
 
-" Explicitly yank to system clipboard (highlighted and entire row)
-noremap <leader>y "+y
-noremap <leader>Y "+Y
+" Yank the whole file
+nnoremap <leader>y <Cmd>%yank<CR>
+nnoremap <leader>v ggvG$
 
 " Open file explorer
-noremap <silent> <leader>e :Lex<CR>
+nnoremap <leader>e <Cmd>Lex<CR>
 
+" Move text up and down
+" Option + j = ∆ in Mac
+" Option + k = ˚ in Mac
+nnoremap ∆ :m .+1<CR>==
+nnoremap ˚ :m .-2<CR>==
+inoremap ∆ <Esc>:m .+1<CR>==gi
+inoremap ˚ <Esc>:m .-2<CR>==gi
+vnoremap ∆ :m '>+1<CR>gv=gv
+vnoremap ˚ :m '<-2<CR>gv=gv
 
 " ========================================
 " Other
@@ -114,20 +104,105 @@ noremap <silent> <leader>e :Lex<CR>
 
 " Sync clipboard with OS
 if system('uname -s') == "Darwin\n"
-  set clipboard=unnamed "OSX
+    set clipboard=unnamed "OSX
 else
-  set clipboard=unnamedplus "Linux
+    set clipboard=unnamedplus "Linux
 endif
 
 " Syntax highlighting
-syntax on
+syntax enable
 
-" True colors
-if !has('gui_running') && &term =~ '\%(screen\|tmux\)'
-  let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
-  let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
-endif
+" Status line
+function Stl_mode()
+    let l:mode_display={
+       \ 'n'  : 'NORMAL',
+       \ 'v'  : 'VISUAL',
+       \ 'V'  : 'V-LINE',
+       \ "\<C-V>" : 'V-BLOCK',
+       \ 'i'  : 'INSERT',
+       \ 'R'  : 'REPLACE',
+       \ 'Rv' : 'V-REPLACE',
+       \ 'c'  : 'COMMAND',
+       \}
+
+    let l:mode_color={
+       \ 'n'  : '#a89984',
+       \ 'v'  : '#fe8019',
+       \ 'V'  : '#fe8019',
+       \ "\<C-V>" : '#fe8019',
+       \ 'i'  : '#83a598',
+       \ 'R'  : '#fb4934',
+       \ 'Rv' : '#fe8019',
+       \ 'c'  : '#b8bb26',
+       \}
+    let l:mode=mode()
+    call hlset([#{name: 'StatusLineA', guibg: l:mode_color[l:mode]}])
+    call hlset([#{name: 'StatusLineAB', guifg: l:mode_color[l:mode]}])
+    return l:mode_display[l:mode]
+endfunction
+
+function Stl_git()
+    silent return system("git branch --show-current 2>/dev/null | tr -d '\n'")
+endfunction
+
+function Stl_set_highlight_groups()
+    highlight StatusLineA guibg=#a89984 guifg=#282828 gui=NONE cterm=bold
+    highlight StatusLineB guibg=#504945 guifg=#ebdbb2 gui=NONE cterm=NONE
+    highlight StatusLineC guibg=#3c3836 guifg=#a89984 gui=NONE cterm=NONE
+    highlight StatusLineAB guibg=#504945 guifg=#a89984 gui=NONE cterm=NONE
+    highlight StatusLineBC guibg=#3c3836 guifg=#504945 gui=NONE cterm=NONE
+endfunction
+
+set statusline=
+set statusline+=%#StatusLineA#\ \ %{Stl_mode()}\ 
+set statusline+=%#StatusLineAB#
+set statusline+=%#StatusLineB#\ \ %{Stl_git()}\ 
+set statusline+=%#StatusLineBC#
+set statusline+=%#StatusLineC#\ %t
+
+set statusline+=%=
+set statusline+=%y\ 
+set statusline+=%#StatusLineBC#
+set statusline+=%#StatusLineB#\ %l:%c\ 
+set statusline+=%#StatusLineAB#
+set statusline+=%#StatusLineA#\ %p%%\ 
+
+" Colorscheme
 set termguicolors
+set background=dark
+augroup my_retrobox
+    au!
+    au Colorscheme retrobox highlight Normal guifg=#ebdbb2 guibg=#282828 gui=NONE cterm=NONE
+    au Colorscheme retrobox call Stl_set_highlight_groups()
+augroup END
+colorscheme retrobox
 
-set background=dark    " Setting dark mode
-colorscheme gruvbox
+" change cursor depending on mode
+let &t_SI = "\e[5 q"
+let &t_EI = "\e[1 q"
+set ttimeout
+set ttimeoutlen=1
+set ttyfast
+
+" Restore cursor to last edited position when opening a file
+augroup RestoreCursor
+  autocmd!
+  autocmd BufReadPost *
+    \ let line = line("'\"")
+    \ | if line >= 1 && line <= line("$") && &filetype !~# 'commit'
+    \      && index(['xxd', 'gitrebase'], &filetype) == -1
+    \ |   execute "normal! g`\""
+    \ | endif
+augroup END
+
+" Detect filetype plugins and indent files
+filetype plugin indent on
+
+" Make % more powerful
+packadd! matchit
+
+" Let's save undo info!
+call mkdir($HOME."/.vim/undo-dir", "p")
+set undodir=~/.vim/undo-dir
+set undofile
+

@@ -12,6 +12,7 @@ vim.opt.shortmess:append 'c' -- don't give |ins-completion-menu| messages
 vim.o.cmdheight = 1 -- space in the neovim command line for displaying messages
 vim.o.signcolumn = 'yes' -- always draw the signcolumn, even if it is empty
 vim.o.background = 'dark' -- 'light' or 'dark'
+vim.o.wrap = false -- line wrap
 
 -- Highlight when yanking (copying) text
 --  Try it with `yap` in normal mode
