@@ -16,6 +16,7 @@ set laststatus=2
 set showcmd
 set nowrap
 set wildmenu
+set hidden
 
 " SEARCHING AND COMPLETION
 set ignorecase
