@@ -24,22 +24,22 @@ return {
       insert = {
         a = { bg = colors.blue, fg = colors.black, gui = 'bold' },
         b = { bg = colors.lightgray, fg = colors.white },
-        c = { bg = colors.lightgray, fg = colors.white },
+        c = { bg = colors.darkgray, fg = colors.gray },
       },
       visual = {
         a = { bg = colors.yellow, fg = colors.black, gui = 'bold' },
         b = { bg = colors.lightgray, fg = colors.white },
-        c = { bg = colors.inactivegray, fg = colors.black },
+        c = { bg = colors.darkgray, fg = colors.gray },
       },
       replace = {
         a = { bg = colors.red, fg = colors.black, gui = 'bold' },
         b = { bg = colors.lightgray, fg = colors.white },
-        c = { bg = colors.black, fg = colors.white },
+        c = { bg = colors.darkgray, fg = colors.gray },
       },
       command = {
         a = { bg = colors.green, fg = colors.black, gui = 'bold' },
         b = { bg = colors.lightgray, fg = colors.white },
-        c = { bg = colors.inactivegray, fg = colors.black },
+        c = { bg = colors.darkgray, fg = colors.gray },
       },
       inactive = {
         a = { bg = colors.darkgray, fg = colors.gray, gui = 'bold' },
@@ -79,7 +79,7 @@ return {
     local diff = {
       'diff',
       colored = false,
-      symbols = { added = ' ', modified = ' ', removed = ' ' }, -- changes diff symbols
+      symbols = { added = ' ', modified = ' ', removed = ' ' },
       cond = hide_in_width,
     }
 
@@ -96,7 +96,7 @@ return {
         lualine_a = { mode },
         lualine_b = { 'branch' },
         lualine_c = { filename },
-        lualine_x = { diagnostics, diff, { 'encoding', cond = hide_in_width }, { 'filetype', cond = hide_in_width } },
+        lualine_x = { diagnostics, diff, { 'filetype' } },
         lualine_y = { 'location' },
         lualine_z = { 'progress' },
       },
@@ -109,7 +109,7 @@ return {
         lualine_z = {},
       },
       tabline = {},
-      extensions = { 'fugitive' },
+      extensions = { 'lazy', 'mason', 'oil', 'quickfix' },
     }
   end,
 }
