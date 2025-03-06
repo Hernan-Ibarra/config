@@ -17,6 +17,7 @@ set showcmd
 set nowrap
 set wildmenu
 set hidden
+set noshowmode
 
 " SEARCHING AND COMPLETION
 set ignorecase
