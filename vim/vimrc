@@ -43,7 +43,7 @@ set noexpandtab
 " OS INTERACTION
 set mouse=a
 set updatetime=250
-set exrc
+" set exrc " DANGER!
 set nowritebackup
 
 " SPELLING
