@@ -12,7 +12,7 @@ vim.api.nvim_create_user_command('Squit', save_and_quit, {
   complete = 'file',
 })
 
-local delete_file = function()
+local delete_current_file = function()
   local arglist_length = vim.fn.argc()
   local arglist_index = vim.fn.argidx()
 
@@ -35,6 +35,34 @@ local delete_file = function()
   vim.cmd.argument(arglist_index + 1)
 end
 
-vim.api.nvim_create_user_command('Delete', delete_file, {
+vim.api.nvim_create_user_command('Delete', delete_current_file, {
   desc = 'Delete the current file and buffer',
+})
+
+-- command DiffOrig vert new | set buftype=nofile | read ++edit # | 0d_
+-- \ | diffthis | wincmd p | diffthis
+
+local diff_original = function()
+  local this_win = vim.api.nvim_get_current_win()
+  local this_buf = vim.api.nvim_win_get_buf(this_win)
+  vim.cmd.diffthis()
+
+  local new_buf = vim.api.nvim_create_buf(true, true)
+  local filetype = vim.api.nvim_get_option_value('filetype', { buf = this_buf })
+  vim.api.nvim_set_option_value('filetype', filetype, { buf = new_buf })
+
+  local new_win = vim.api.nvim_open_win(new_buf, false, {
+    split = 'right',
+    win = 0,
+  })
+
+  vim.api.nvim_buf_call(new_buf, function()
+    vim.cmd('read ++edit #' .. this_buf)
+    vim.cmd.diffthis()
+  end)
+  vim.api.nvim_buf_set_lines(new_buf, 0, 0, false, {})
+end
+
+vim.api.nvim_create_user_command('DiffOrig', diff_original, {
+  desc = 'See the differences between the current buffer and the file it was loaded from.',
 })
