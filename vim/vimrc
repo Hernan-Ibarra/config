@@ -45,6 +45,7 @@ set mouse=a
 set updatetime=250
 " set exrc " DANGER!
 set nowritebackup
+set confirm
 
 " SPELLING
 set spelllang=en_gb
