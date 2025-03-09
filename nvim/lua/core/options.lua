@@ -50,6 +50,7 @@ vim.schedule(function()
 end) -- Schedule the setting after `UiEnter` because it can increase startup-time.
 vim.o.exrc = true -- WARN: Allow execution of local configuration files. For more info see :help 'exrc'
 vim.o.belloff = ''
+vim.o.confirm = true
 
 -- SPELLING
 vim.o.spelllang = 'en_gb' -- British English
