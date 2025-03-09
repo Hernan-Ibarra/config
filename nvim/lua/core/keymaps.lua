@@ -58,7 +58,7 @@ vim.keymap.set('n', '<leader>do', vim.diagnostic.open_float, { desc = 'Open floa
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostics list' })
 
 -- Go to normal mode in terminal mode with double escape
-vim.keymap.set('t', '<esc><esc>', '<c-\\><c-n>')
+vim.keymap.set('t', '<esc><esc>', '<c-\\><c-n>', { desc = 'Go to normal mode in terminal mode with double escape' })
 
 -- Yank the whole file
-vim.keymap.set('n', '<leader>y', ':%y<CR>')
+vim.keymap.set('n', '<leader>y', ':%y<CR>', { desc = 'Yank the whole file' })
