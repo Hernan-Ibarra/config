@@ -39,9 +39,6 @@ vim.api.nvim_create_user_command('Delete', delete_current_file, {
   desc = 'Delete the current file and buffer',
 })
 
--- command DiffOrig vert new | set buftype=nofile | read ++edit # | 0d_
--- \ | diffthis | wincmd p | diffthis
-
 local diff_original = function()
   local this_win = vim.api.nvim_get_current_win()
   local this_buf = vim.api.nvim_win_get_buf(this_win)
@@ -51,7 +48,7 @@ local diff_original = function()
   local filetype = vim.api.nvim_get_option_value('filetype', { buf = this_buf })
   vim.api.nvim_set_option_value('filetype', filetype, { buf = new_buf })
 
-  local new_win = vim.api.nvim_open_win(new_buf, false, {
+  vim.api.nvim_open_win(new_buf, false, {
     split = 'right',
     win = 0,
   })
