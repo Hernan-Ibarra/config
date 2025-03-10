@@ -62,3 +62,6 @@ vim.keymap.set('t', '<esc><esc>', '<c-\\><c-n>', { desc = 'Go to normal mode in 
 
 -- Yank the whole file
 vim.keymap.set('n', '<leader>y', ':%y<CR>', { desc = 'Yank the whole file' })
+
+-- Select whole file
+vim.keymap.set('n', '<leader>v', 'ggVG', { desc = 'Visually select the whole file' })
