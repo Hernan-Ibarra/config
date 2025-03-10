@@ -61,14 +61,30 @@ vim.api.nvim_create_user_command('DelThis', delete_current_file_and_buffer, {
   desc = 'Delete the current file and buffer',
 })
 
+---Creates a new scratch buffer with the same filetype as the argument
+---@param buf? integer
+---@return integer
+local scratch_from_buf = function(buf)
+  local this_buf = buf or vim.api.nvim_get_current_buf()
+  local scratch_buf = vim.api.nvim_create_buf(true, true)
+  local filetype = vim.api.nvim_get_option_value('filetype', { buf = this_buf })
+  vim.api.nvim_set_option_value('filetype', filetype, { buf = scratch_buf })
+  return scratch_buf
+end
+
+vim.api.nvim_create_user_command('Scratch', function()
+  local scratch_buf = scratch_from_buf()
+  vim.cmd.buffer(scratch_buf)
+end, {
+  desc = 'Open a new scratch buffer in the same window',
+})
+
 local diff_original = function()
   local this_win = vim.api.nvim_get_current_win()
   local this_buf = vim.api.nvim_win_get_buf(this_win)
   vim.cmd.diffthis()
 
-  local new_buf = vim.api.nvim_create_buf(true, true)
-  local filetype = vim.api.nvim_get_option_value('filetype', { buf = this_buf })
-  vim.api.nvim_set_option_value('filetype', filetype, { buf = new_buf })
+  local new_buf = scratch_from_buf(this_buf)
 
   vim.api.nvim_open_win(new_buf, false, {
     split = 'right',
