@@ -1,9 +1,9 @@
-local save_and_quit = function(opts)
+local save_and_quit = function(mods)
   vim.cmd.saveas {
-    args = { opts.fargs[1] },
-    bang = opts.bang,
+    args = { mods.fargs[1] },
+    bang = mods.bang,
   }
-  vim.cmd.quit { bang = opts.bang }
+  vim.cmd.quit { bang = mods.bang }
 end
 
 vim.api.nvim_create_user_command('Squit', save_and_quit, {
@@ -12,7 +12,7 @@ vim.api.nvim_create_user_command('Squit', save_and_quit, {
   complete = 'file',
 })
 
-local delete_current_file_and_buffer = function(opts)
+local delete_current_file_and_buffer = function(mods)
   local buf = vim.api.nvim_get_current_buf()
   local buf_name = vim.api.nvim_buf_get_name(buf)
 
@@ -21,7 +21,7 @@ local delete_current_file_and_buffer = function(opts)
     return
   end
 
-  if (not opts.bang) and vim.api.nvim_get_option_value('confirm', {}) then
+  if (not mods.bang) and vim.api.nvim_get_option_value('confirm', {}) then
     local message = 'Delete file ' .. vim.fn.fnamemodify(buf_name, ':t') .. '?\nBuffer will be deleted too!'
     local choice = vim.fn.confirm(message, '&Yes\n&No', 0, 'Question')
     if choice ~= 1 then
@@ -100,4 +100,12 @@ end
 
 vim.api.nvim_create_user_command('DiffOrig', diff_original, {
   desc = 'See the differences between the current buffer and the file it was loaded from.',
+})
+
+vim.api.nvim_create_user_command('Help', function(mods)
+  vim.cmd.help(mods.fargs[1])
+  vim.cmd.only { bang = mods.bang }
+end, {
+  desc = 'Like :help but as the only window',
+  nargs = '?',
 })
