@@ -78,6 +78,8 @@ echo -ne "\e[1 q"
 zle -N zle-line-init
 
 # Set up fzf key bindings and fuzzy completion
+FZF_ALT_C_COMMAND=
+FZF_CTRL_T_COMMAND=
 source <(fzf --zsh)
 [ -f "$XDG_CONFIG_HOME/fzf/fzfrc" ] && source "$XDG_CONFIG_HOME/fzf/fzfrc"
 
