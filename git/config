@@ -19,3 +19,9 @@
 	tool = nvimdiff
 [difftool]
 	prompt = false
+[push]
+    default = matching
+[url "git@gitlab.io.thehut.local:"]
+    insteadOf = https://gitlab.io.thehut.local/
+[url "git@github.com:"]
+    insteadOf = https://github.com/
