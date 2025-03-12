@@ -1,6 +1,6 @@
 # export FZF_DEFAULT_OPTS='--tmux'
 
-fg() (
+frg() (
 	RELOAD='reload:rg --column --color=always --smart-case {q} || :'
 	OPENER='if [[ $FZF_SELECT_COUNT -eq 0 ]]; then
             nvim {1} +{2}     # No selection. Open the current line in Vim.
