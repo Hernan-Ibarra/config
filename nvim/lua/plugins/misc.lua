@@ -51,7 +51,14 @@ return {
     'stevearc/oil.nvim',
     dependencies = { 'nvim-tree/nvim-web-devicons' },
     lazy = false,
-    opts = {},
+    opts = {
+      buf_options = {
+        buflisted = false,
+        bufhidden = 'hide',
+        readonly = false,
+        modifiable = true,
+      },
+    },
     keys = {
       { '-', '<CMD>Oil<CR>', desc = '<CMD>Oil<CR>' },
     },
