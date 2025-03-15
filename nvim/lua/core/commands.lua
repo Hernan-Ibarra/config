@@ -108,4 +108,5 @@ vim.api.nvim_create_user_command('Help', function(mods)
 end, {
   desc = 'Like :help but as the only window',
   nargs = '?',
+  complete = 'help',
 })
