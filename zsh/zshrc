@@ -100,3 +100,6 @@ export GOPATH="${HOME}/go"
 export GOROOT="$(brew --prefix golang)/libexec"
 export PATH="$PATH:${GOPATH}/bin:${GOROOT}/bin"
 
+# export VAULT_ADDR='http://127.0.0.1:8200'
+#
+export PATH=/Applications/Infractl:$PATH
