@@ -1,3 +1,4 @@
+-- Squit {{{
 local save_and_quit = function(mods)
   vim.cmd.saveas {
     args = { mods.fargs[1] },
@@ -10,8 +11,9 @@ vim.api.nvim_create_user_command('Squit', save_and_quit, {
   nargs = 1,
   desc = 'Save and quit the current buffer under a different filename',
   complete = 'file',
-})
+}) --}}}
 
+-- DelThis {{{
 local delete_current_file_and_buffer = function(mods)
   local buf = vim.api.nvim_get_current_buf()
   local buf_name = vim.api.nvim_buf_get_name(buf)
@@ -59,9 +61,9 @@ end
 
 vim.api.nvim_create_user_command('DelThis', delete_current_file_and_buffer, {
   desc = 'Delete the current file and buffer',
-})
+}) --}}}
 
----Creates a new scratch buffer with the same filetype as the argument
+---Creates a new scratch buffer with the same filetype as the argument {{{
 ---@param buf? integer
 ---@return integer
 local scratch_from_buf = function(buf)
@@ -77,8 +79,9 @@ vim.api.nvim_create_user_command('Scratch', function()
   vim.cmd.buffer(scratch_buf)
 end, {
   desc = 'Open a new scratch buffer in the same window',
-})
+}) --}}}
 
+-- DiffOrig {{{
 local diff_original = function()
   local this_win = vim.api.nvim_get_current_win()
   local this_buf = vim.api.nvim_win_get_buf(this_win)
@@ -100,8 +103,9 @@ end
 
 vim.api.nvim_create_user_command('DiffOrig', diff_original, {
   desc = 'See the differences between the current buffer and the file it was loaded from.',
-})
+}) --}}}
 
+-- Help {{{
 vim.api.nvim_create_user_command('Help', function(mods)
   vim.cmd.help(mods.fargs[1])
   vim.cmd.only { bang = mods.bang }
@@ -109,4 +113,4 @@ end, {
   desc = 'Like :help but as the only window',
   nargs = '?',
   complete = 'help',
-})
+}) --}}}

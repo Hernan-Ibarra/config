@@ -1,7 +1,6 @@
 return {
   'lewis6991/gitsigns.nvim',
   opts = {
-    -- See `:help gitsigns.txt`
     signs = {
       add = { text = '+' },
       change = { text = '~' },
