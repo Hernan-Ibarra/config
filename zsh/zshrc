@@ -78,6 +78,8 @@ echo -ne "\e[1 q"
 zle -N zle-line-init
 
 # Set up fzf key bindings and fuzzy completion
+FZF_ALT_C_COMMAND=
+FZF_CTRL_T_COMMAND=
 source <(fzf --zsh)
 [ -f "$XDG_CONFIG_HOME/fzf/fzfrc" ] && source "$XDG_CONFIG_HOME/fzf/fzfrc"
 
@@ -92,3 +94,12 @@ setopt HIST_IGNORE_ALL_DUPS
 setopt HIST_IGNORE_SPACE
 setopt HIST_FIND_NO_DUPS
 setopt HIST_SAVE_NO_DUPS
+
+# Set up Golang paths
+export GOPATH="${HOME}/go"
+export GOROOT="$(brew --prefix golang)/libexec"
+export PATH="$PATH:${GOPATH}/bin:${GOROOT}/bin"
+
+# export VAULT_ADDR='http://127.0.0.1:8200'
+#
+export PATH=/Applications/Infractl:$PATH

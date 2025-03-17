@@ -17,6 +17,7 @@ set showcmd
 set nowrap
 set wildmenu
 set hidden
+set noshowmode
 
 " SEARCHING AND COMPLETION
 set ignorecase
@@ -42,8 +43,9 @@ set noexpandtab
 " OS INTERACTION
 set mouse=a
 set updatetime=250
-set exrc
+" set exrc " DANGER!
 set nowritebackup
+set confirm
 
 " SPELLING
 set spelllang=en_gb
@@ -205,4 +207,8 @@ packadd! matchit
 call mkdir($HOME."/.vim/undo-dir", "p")
 set undodir=~/.vim/undo-dir
 set undofile
+
+" Command to compare changes made with original file
+command DiffOrig vert new | set bt=nofile | r ++edit # | 0d_ | diffthis
+	    \ | wincmd p | diffthis
 

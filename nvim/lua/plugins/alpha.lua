@@ -1,8 +1,6 @@
 return {
   'goolord/alpha-nvim',
-  dependencies = {
-    'nvim-tree/nvim-web-devicons',
-  },
+  dependencies = { "nvim-tree/nvim-web-devicons", opts = {} },
 
   config = function()
     local alpha = require 'alpha'
@@ -28,7 +26,7 @@ return {
     }
 
     local quotes = {
-      { 'Talk is cheap. Show me the code.', '', '- Linus Torvalds' },
+      { 'Talk is cheap. Show me the code.',                     '', '- Linus Torvalds' },
       {
         "I don't care if it works on your machine! We are not shipping your machine.",
         '',
@@ -59,8 +57,8 @@ return {
         '',
         '- William Laeder',
       },
-      { 'Computers are fast; developers keep them slow.', '', '- Peter Coffee' },
-      { "Don't comment bad code - rewrite it.", '', '- Brian Kernighan' },
+      { 'Computers are fast; developers keep them slow.',       '', '- Peter Coffee' },
+      { "Don't comment bad code - rewrite it.",                 '', '- Brian Kernighan' },
       { 'Nothing is more permanent than a temporary solution.', '', '- Fyodor Dostoevsky' },
       {
         'Software is hard.',
@@ -82,17 +80,17 @@ return {
         '',
         '- Alan Perlis',
       },
-      { "Code is like humor. When you have to explain it, it's bad.", '', '- Cory House' },
-      { 'Think twice, code once.', '', '- Anonymous' },
-      { 'The sooner you start to code, the longer the program will take.', '', '- Roy Carlson' },
-      { 'Computers are useless. They can only give you answers.', '', '- Pablo Picasso' },
+      { "Code is like humor. When you have to explain it, it's bad.",           '', '- Cory House' },
+      { 'Think twice, code once.',                                              '', '- Anonymous' },
+      { 'The sooner you start to code, the longer the program will take.',      '', '- Roy Carlson' },
+      { 'Computers are useless. They can only give you answers.',               '', '- Pablo Picasso' },
       { 'Almost every programming language is overrated by its practitioners.', '', '- Larry Wall' },
       {
         "If you don't make mistakes, you're not working on hard enough problems.",
         '',
         '- Frank Wilczek',
       },
-      { 'Optimization hinders evolution.', '', '- Alan Perlis' },
+      { 'Optimization hinders evolution.',                          '', '- Alan Perlis' },
       { 'Experience is the name everyone gives to their mistakes.', '', '- Oscar Wilde' },
       {
         'Controlling complexity is the essence of computer programming.',

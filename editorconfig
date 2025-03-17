@@ -1,5 +1,4 @@
 # This .editorconfig file should live outside of all repositories (and thus not be committed to source control) in a parent directory, as it includes personal preference presentation settings, like a tab's `indent_size`.
-
 root = true
 
 [*]
@@ -7,9 +6,9 @@ charset = utf-8
 end_of_line = lf
 trim_trailing_whitespace = true
 insert_final_newline = true
-indent_style = tab
+tab_width = 4
 indent_size = 4
-tab_width = 8
+indent_style = tab
 
 [*.{html,astro,css,js,jsx,ts,tsx,config,json,md,lua}]
 indent_style = space
@@ -17,7 +16,7 @@ indent_size = 2
 
 [*.py]
 indent_style = space
-tab_width = 4
+indent_size = 4
 max_line_length = 79
 
 [*.java]
@@ -25,3 +24,5 @@ indent_style = space
 indent_size = 2
 max_line_length = 100
 insert_final_newline = false
+
+# vim: set ft=editorconfig:
