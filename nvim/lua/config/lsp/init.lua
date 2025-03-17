@@ -8,3 +8,5 @@ vim.api.nvim_create_autocmd('LspAttach', {
 
 require 'config.lsp.servers.lua-ls'
 require 'config.lsp.servers.gopls'
+require 'config.lsp.servers.bash-language-server'
+
