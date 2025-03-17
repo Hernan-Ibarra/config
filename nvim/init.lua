@@ -1,6 +1,6 @@
 require 'config.options'
 require 'config.keymaps'
-require 'config.commands'
+require 'config.user-commands'
 require 'config.lazy'
 require 'config.lsp'
 require 'config.autocommands'
