@@ -1,31 +1,38 @@
 local ls = require("luasnip")
 local s = ls.snippet
 local i = ls.insert_node
+local f = ls.function_node
+local c = ls.choice_node
 local extras = require("luasnip.extras")
 local rep = extras.rep
 local fmt = require("luasnip.extras.fmt").fmt
+
+local restore = function(_, snip)
+  return snip.captures[1]
+end
+
 return {
-  s({ trig = 'l' },
+  s({ trig = '^(%s*)l', trigEngine = "pattern" },
     fmt(
       [[
-        local {} = {}
-      ]], { i(1, 'variable'), i(2) }
+        {}local {} = {}
+      ]], { f(restore), i(1, 'variable'), i(2) }
     )
   ),
-  s({ trig = 'lf' },
+  s({ trig = '^(%s*)lf', trigEngine = "pattern" },
     fmt(
       [[
-        local {} = function({})
-          {}
-        end
-      ]], { i(1), i(2), i(3) }
+        {r}local {} = function({})
+          {r}{}
+        {r}end
+      ]], { r = f(restore), i(1), i(2), i(3) }
     )
   ),
-  s({ trig = 'lr' },
+  s({ trig = '^(%s*)lr', trigEngine = "pattern" },
     fmt(
       [[
-        local {} = require('{}')
-      ]], { i(1), i(2) }
+        {}local {}{} = require('{}')
+      ]], { f(restore), rep(1), i(0), i(1) }
     )
   ),
 }
