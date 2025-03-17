@@ -12,24 +12,14 @@ local path = '/Users/hernan.ibarramejia87/code/accelerator-lsp'
 local command = { 'npm', 'run', '--silent', '--prefix', path, 'start' }
 local server = vim.lsp.start { name = 'accelerator-lsp', cmd = command }
 
-local notify = require 'notify'
-
-if not notify then
-  notify = function(msg, _, _)
-    vim.notify(msg)
-  end
-end
+local notify = vim.notify
 
 if not server then
-  notify('Could not connect to accelerator language server.', 'error', {
-    title = 'accelerator-lsp',
-  })
+  notify 'Could not connect to accelerator language server.'
   return
 end
 
 vim.lsp.buf_attach_client(0, server)
-notify('Accelerator language server found.', 'info', {
-  title = 'accelerator-lsp',
-})
+notify 'Accelerator language server found.'
 
 vim.b.did_accelerator_lsp_setup = true
