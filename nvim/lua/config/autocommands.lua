@@ -1,17 +1,38 @@
+-- TRESITTER FOLDING
+local treesitter_folding = vim.api.nvim_create_augroup("treesitter_folding", { clear = true })
+
 vim.api.nvim_create_autocmd({ "FileType" }, {
-  callback = function()
+  group = treesitter_folding,
+  callback = function(ev)
+    local buf = ev.buf
+    local parsers = require("nvim-treesitter.parsers")
+    local lang = parsers.get_buf_lang(buf)
+    vim.b[buf].has_treesitter_parser = parsers.has_parser(lang)
+  end,
+  desc = "Checks whether buffer has treesitter parser"
+})
+
+vim.api.nvim_create_autocmd({ "BufWinEnter" }, {
+  group = treesitter_folding,
+  callback = function(ev)
+    local has_parser = vim.b[ev.buf].has_treesitter_parser
+    if not has_parser then
+      return
+    end
+
     local win = vim.api.nvim_get_current_win()
     local set = vim.wo[win]
     local fdm = vim.api.nvim_get_option_value('foldmethod', { win = win })
-    if (fdm == 'manual' or fdm == 'syntax') and require("nvim-treesitter.parsers").has_parser() then
-      set.foldmethod = "expr"
+
+    if fdm == 'manual' or fdm == 'syntax' then
       set.foldexpr = "nvim_treesitter#foldexpr()"
-    else
-      set.foldmethod = "syntax"
+      set.foldmethod = "expr"
     end
   end,
+  desc = "Sets Tresitter folding if parser is found, defaults to syntax folding otherwise"
 })
 
+-- REMEMBER LAST LOCATION
 vim.api.nvim_create_autocmd("BufReadPost", {
   group = vim.api.nvim_create_augroup("last_loc", { clear = true }),
   callback = function(event)
@@ -26,4 +47,5 @@ vim.api.nvim_create_autocmd("BufReadPost", {
       pcall(vim.api.nvim_win_set_cursor, 0, mark)
     end
   end,
+  desc = "Attempts to set cursor to position when last exiting the current buffer"
 })
