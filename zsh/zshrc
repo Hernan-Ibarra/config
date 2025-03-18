@@ -103,3 +103,4 @@ export PATH="$PATH:${GOPATH}/bin:${GOROOT}/bin"
 # export VAULT_ADDR='http://127.0.0.1:8200'
 #
 export PATH=/Applications/Infractl:$PATH
+export PATH=/Applications/AppRuntime:$PATH
