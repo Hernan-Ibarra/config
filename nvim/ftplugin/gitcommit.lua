@@ -5,7 +5,7 @@ if vim.b[buf].did_gitcommit_select then
 end
 
 vim.schedule(function()
-  vim.cmd.execute([["normal gg0V\<c-g>"]])
+  vim.cmd.execute([["normal! ggV\<c-g>"]])
 end)
 
 vim.b[buf].did_gitcommit_select = true
