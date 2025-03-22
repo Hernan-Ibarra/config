@@ -1,4 +1,4 @@
--- DISPLAY {{{
+-- DISPLAY
 vim.wo.number = true
 vim.o.relativenumber = true
 vim.opt.termguicolors = true
@@ -22,9 +22,9 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   callback = function()
     vim.highlight.on_yank()
   end,
-}) --}}}
+})
 
--- SEARCHING AND COMPLETION {{{
+-- SEARCHING AND COMPLETION
 vim.o.ignorecase = true
 vim.o.smartcase = true
 vim.o.completeopt = 'menuone,noselect'
@@ -41,7 +41,7 @@ vim.o.linebreak = true
 vim.o.timeoutlen = 500
 --}}}
 
--- OS INTERACTION {{{
+-- OS INTERACTION
 vim.o.mouse = 'a'
 vim.o.undofile = true
 vim.o.updatetime = 250
@@ -51,9 +51,7 @@ end)
 vim.o.exrc = true
 vim.o.belloff = ''
 vim.o.confirm = true
---}}}
 
--- SPELLING {{{
+-- SPELLING
 vim.o.spelllang = 'en_gb'
 vim.o.spelloptions = 'camel,noplainbuffer'
---}}}
