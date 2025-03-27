@@ -1,7 +1,6 @@
 -- DISPLAY
 vim.wo.number = true
 vim.o.relativenumber = true
-vim.opt.termguicolors = true
 vim.o.cursorline = true
 vim.o.splitbelow = true
 vim.o.splitright = true
@@ -27,8 +26,9 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 -- SEARCHING AND COMPLETION
 vim.o.ignorecase = true
 vim.o.smartcase = true
-vim.o.completeopt = 'menuone,noselect'
-vim.opt.inccommand = 'split'
+vim.o.completeopt = 'fuzzy,menuone,noselect,popup'
+vim.o.inccommand = 'split'
+vim.opt.dictionary:append { '/usr/share/dict/words' }
 
 -- FORMATTING
 vim.o.expandtab = false
@@ -39,7 +39,6 @@ vim.o.smartindent = true
 vim.o.breakindent = true
 vim.o.linebreak = true
 vim.o.timeoutlen = 500
---}}}
 
 -- OS INTERACTION
 vim.o.mouse = 'a'

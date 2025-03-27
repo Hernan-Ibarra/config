@@ -2,13 +2,16 @@ return {
   'ellisonleao/gruvbox.nvim',
   priority = 1000,
   config = function()
-    require('gruvbox').setup()
-    vim.cmd([[highlight @markup.heading.1.markdown cterm=bold gui=bold guifg=#fb4934]])
-    vim.cmd([[highlight @markup.heading.2.markdown cterm=bold gui=bold guifg=#fe8019]])
-    vim.cmd([[highlight @markup.heading.3.markdown cterm=bold gui=bold guifg=#fabd2f]])
-    vim.cmd([[highlight @markup.heading.4.markdown cterm=bold gui=bold guifg=#b8bb26]])
-    vim.cmd([[highlight @markup.heading.5.markdown cterm=bold gui=bold guifg=#83a598]])
-    vim.cmd([[highlight @markup.heading.6.markdown cterm=bold gui=bold guifg=#d3869b]])
+    require('gruvbox').setup({
+      overrides = {
+        ['@markup.heading.1.markdown'] = { fg = '#fb4934', bg = '', bold = true },
+        ['@markup.heading.2.markdown'] = { fg = '#fe8019', bg = '', bold = true },
+        ['@markup.heading.3.markdown'] = { fg = '#fabd2f', bg = '', bold = true },
+        ['@markup.heading.4.markdown'] = { fg = '#b8bb26', bg = '', bold = true },
+        ['@markup.heading.5.markdown'] = { fg = '#83a598', bg = '', bold = true },
+        ['@markup.heading.6.markdown'] = { fg = '#d3869b', bg = '', bold = true },
+      }
+    })
     vim.cmd 'colorscheme gruvbox'
   end,
 }
