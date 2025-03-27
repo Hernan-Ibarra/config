@@ -1,6 +1,8 @@
 return {
   'nvim-lualine/lualine.nvim',
   config = function()
+    vim.api.nvim_set_hl(0, "StatusLine", { reverse = false })
+    vim.api.nvim_set_hl(0, "StatusLineNC", { reverse = false })
     local colors = {
       black = '#282828',
       white = '#ebdbb2',
@@ -88,7 +90,7 @@ return {
         theme = gruvbox_dark,
         section_separators = { left = '', right = '' },
         component_separators = { left = '', right = '' },
-        disabled_filetypes = { 'alpha', 'neo-tree', 'Avante' },
+        disabled_filetypes = { 'alpha' },
         always_divide_middle = true,
       },
       sections = {
@@ -108,7 +110,7 @@ return {
         lualine_z = {},
       },
       tabline = {},
-      extensions = { 'lazy', 'mason', 'oil', 'quickfix' },
+      extensions = { 'lazy', 'oil', 'quickfix' },
     }
   end,
 }
