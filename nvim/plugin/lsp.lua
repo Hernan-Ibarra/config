@@ -48,5 +48,5 @@ end, { desc = 'Restart active language servers' })
 
 vim.diagnostic.config({ virtual_lines = true })
 
-vim.lsp.enable({ 'bash-language-server', 'gopls', 'lua-language-server' })
+vim.lsp.enable({ 'bash-language-server', 'gopls', 'lua-language-server', 'accelerator-lsp' })
 
