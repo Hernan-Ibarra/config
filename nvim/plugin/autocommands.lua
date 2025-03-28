@@ -25,6 +25,10 @@ vim.api.nvim_create_autocmd({ "BufWinEnter" }, {
     local fdm = vim.api.nvim_get_option_value('foldmethod', { win = win })
 
     if fdm == 'manual' or fdm == 'syntax' then
+      if vim.api.nvim_get_option_value('filetype', { buf = ev.buf }) == 'json' then
+        set.foldmethod = "indent"
+        return
+      end
       set.foldexpr = "nvim_treesitter#foldexpr()"
       set.foldmethod = "expr"
     end
