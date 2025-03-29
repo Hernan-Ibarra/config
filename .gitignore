@@ -1,6 +1,6 @@
-tmux/plugins
-htop
-karabiner/assets
-karabiner/automatic_backups
-vim/.netrwhist
-gh/
+/tmux/plugins/
+/htop
+/karabiner/assets
+/karabiner/automatic_backups
+/vim/.netrwhist
+/gh/
