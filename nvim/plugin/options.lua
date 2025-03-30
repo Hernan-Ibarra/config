@@ -37,7 +37,7 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 -- SEARCHING AND COMPLETION
 vim.o.ignorecase = true
 vim.o.smartcase = true
-vim.o.completeopt = 'fuzzy,menu,noselect,popup'
+vim.o.completeopt = 'fuzzy,menuone,noinsert,popup'
 vim.o.inccommand = 'split'
 vim.opt.dictionary:append { '/usr/share/dict/words' }
 
