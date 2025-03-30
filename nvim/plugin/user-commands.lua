@@ -114,3 +114,35 @@ end, {
   nargs = '?',
   complete = 'help',
 })
+
+-- Redir
+local function redir_to_scratch(data)
+  local cmd = data.args
+
+  local output = vim.fn.split(vim.fn.execute(cmd), "\n")
+
+  if cmd:sub(1, 1) == '!' then
+    output = vim.list_slice(output, 3)
+  end
+
+  local out_buf = vim.api.nvim_create_buf(false, true)
+  vim.api.nvim_buf_set_lines(out_buf, 0, -1, false, output)
+
+  if vim.g.redir_win then
+    vim.api.nvim_win_set_buf(vim.g.redir_win, out_buf)
+    return
+  end
+
+  local win = vim.api.nvim_open_win(out_buf, true, { vertical = data.smods.vertical })
+  vim.api.nvim_create_autocmd("WinClosed", {
+    pattern = { string.format("%d", win) },
+    callback = function()
+      vim.g.redir_win = nil
+    end,
+  })
+  vim.g.redir_win = win
+end
+
+vim.api.nvim_create_user_command("Redir", redir_to_scratch,
+  { nargs = "+", complete = "command", desc = "Redirect output of command to a scratch buffer" })
+
