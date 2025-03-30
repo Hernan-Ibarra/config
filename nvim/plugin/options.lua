@@ -12,8 +12,19 @@ vim.o.cmdheight = 1
 vim.o.signcolumn = 'yes'
 vim.o.background = 'dark'
 vim.o.wrap = false
+vim.o.foldmethod = "expr"
+vim.o.foldexpr = "v:lua.vim.treesitter.foldexpr()"
 vim.opt.foldopen:remove 'hor'
 vim.o.foldlevelstart = 99
+vim.o.list = true
+vim.opt.listchars = {
+  tab = "▏ ",
+  trail = "·",
+  extends = "»",
+  precedes = "«",
+  leadmultispace = "▏ "
+}
+
 
 vim.api.nvim_create_autocmd('TextYankPost', {
   desc = 'Highlight when yanking (copying) text',
@@ -26,7 +37,7 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 -- SEARCHING AND COMPLETION
 vim.o.ignorecase = true
 vim.o.smartcase = true
-vim.o.completeopt = 'fuzzy,menuone,noselect,popup'
+vim.o.completeopt = 'fuzzy,menu,noselect,popup'
 vim.o.inccommand = 'split'
 vim.opt.dictionary:append { '/usr/share/dict/words' }
 
@@ -47,7 +58,7 @@ vim.o.updatetime = 250
 vim.schedule(function()
   vim.opt.clipboard = 'unnamedplus'
 end)
-vim.o.exrc = true
+-- vim.o.exrc = true
 vim.o.belloff = ''
 vim.o.confirm = true
 
