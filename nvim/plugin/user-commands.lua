@@ -146,3 +146,27 @@ end
 vim.api.nvim_create_user_command("Redir", redir_to_scratch,
   { nargs = "+", complete = "command", desc = "Redirect output of command to a scratch buffer" })
 
+--TeamsMessage
+---Creates a new scratch markdown buffer that goes to your clipboard as rtf
+local scratch_teams_message = function()
+  local scratch_buf = vim.api.nvim_create_buf(true, true)
+  vim.api.nvim_set_option_value('filetype', 'markdown', { buf = scratch_buf })
+  vim.cmd("$tabnew")
+  vim.cmd.buffer(scratch_buf)
+
+  vim.keymap.set('n', '<CR>', function()
+    local lines = vim.api.nvim_buf_get_lines(scratch_buf, 0, -1, false)
+    local pandoc_cmd = vim.split('pandoc -t rtf -s', ' ', { plain = true, trimempty = true })
+    local obj = vim.system(pandoc_cmd, { stdin = lines }):wait()
+
+    if obj.code ~= 0 then
+      vim.notify('Could not convert to rtf', vim.log.levels.ERROR)
+      return
+    end
+
+    vim.system({ 'pbcopy' }, { stdin = vim.split(obj.stdout, '\n') })
+  end, { buffer = scratch_buf })
+end
+
+vim.api.nvim_create_user_command("TeamsMessage", scratch_teams_message,
+  { nargs = 0, desc = "Creates a scratch markdown buffer to copy as rtf" })
