@@ -1,8 +1,6 @@
 return {
   'nvim-lualine/lualine.nvim',
   config = function()
-    vim.api.nvim_set_hl(0, "StatusLine", { reverse = false })
-    vim.api.nvim_set_hl(0, "StatusLineNC", { reverse = false })
     local colors = {
       black = '#282828',
       white = '#ebdbb2',
