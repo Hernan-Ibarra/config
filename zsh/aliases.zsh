@@ -16,22 +16,17 @@ alias gco='git checkout'
 alias gm='git merge'
 alias gp='git push'
 alias gc='git commit -v'
+alias gca='git commit -va'
 alias gcm='git commit -m'
 alias gsw='git switch'
 alias gswc='git switch -c'
 alias gr='git restore'
+alias gmv='git mv'
 
 # Vim/Neovim
 alias v='vim'
 alias nv='nvim'
 alias view='nvim -R'
-
-# Named directories
-doc="$HOME/Documents"
-dow="$HOME/Downloads"
-acc="$HOME/code/accelerator"
-
-alias conf="cd $XDG_CONFIG_HOME"
 
 # Better ls
 alias ls="ls --color=auto"
@@ -62,11 +57,9 @@ alias mkdir='mkdir -pv'
 
 # mcd creates a directory and then cd's into it
 mcd () {
-    mkdir -p "$1"
+    mkdir -pv "$1"
     cd "$1"
 }
-
-alias python='python3'
 
 # slides
 slides () {
