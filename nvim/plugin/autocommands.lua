@@ -6,6 +6,20 @@ vim.api.nvim_create_autocmd("FileType", {
   desc = "Start Treesitter"
 })
 
+-- FOLDING
+vim.api.nvim_create_autocmd("FileType", {
+  callback = function(args)
+    local ft = args.match
+    local skipped = { 'markdown', 'json' }
+    if vim.list_contains(skipped, ft) then
+      return
+    end
+    vim.o.foldmethod = "expr"
+    vim.o.foldexpr = "v:lua.vim.treesitter.foldexpr()"
+  end,
+  desc = "Start Treesitter"
+})
+
 -- REMEMBER LAST LOCATION
 vim.api.nvim_create_autocmd("BufReadPost", {
   group = vim.api.nvim_create_augroup("last_loc", { clear = true }),

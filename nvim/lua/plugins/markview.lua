@@ -9,10 +9,9 @@ return {
     local presets = require('markview.presets')
     require('markview').setup({
       markdown = {
-        headings = presets.headings.glow_center,
         horizontal_rules = presets.horizontal_rules.dashed
       },
-      preview = { icon_provider = 'devicons', modes = preview_modes }
+      preview = { icon_provider = 'devicons', modes = preview_modes, ignore_buftypes = {} }
     })
 
     require("markview.extras.checkboxes").setup({
@@ -56,7 +55,5 @@ return {
           { desc = '[T]oggle [M]arkview', silent = true, buffer = buf })
       end
     })
-
-
   end
 }
